@@ -1,0 +1,80 @@
+## Base16 OneDark
+## Author: Lalit Magant (http://github.com/tilal6991)
+
+##
+# The following matchup is only true if you also changed your terminal emulator
+# colors to the same as the scheme you are using.
+# 0:       #282c34
+# 1:       #e06c75
+# 2:       #98c379
+# 3:       #e5c07b
+# 4:       #61afef
+# 5:       #c678dd
+# 6:       #56b6c2
+# 7:       #abb2bf
+# 8:       #545862
+# 9:       #d19a66
+# 10:      #353b45
+# 11:      #3e4451
+# 12:      #565c64
+# 13:      #b6bdca
+# 14:      #be5046
+# 15:      #c8ccd4
+# 16:      #000000
+##
+
+# overall background and foreground color
+set color_win_fg=default
+set color_win_bg=default
+
+# bottom status line
+set color_statusline_fg=2
+set color_statusline_bg=default
+
+# bottom title line
+set color_titleline_fg=2
+set color_titleline_bg=default
+
+# top title area
+set color_win_title_fg=2
+set color_win_title_bg=default
+set color_win_title_attr=bold
+
+# command-line colors
+set color_cmdline_bg=default
+set color_cmdline_fg=default
+set color_error=1
+set color_info=6
+
+# separator of windows
+# should be black
+set color_separator=10
+
+# unselected currently playing track's text
+set color_win_cur=13
+
+# active selection for currently playing track
+set color_win_cur_sel_bg=default
+set color_win_cur_sel_fg=3
+set color_win_cur_sel_attr=underline
+
+# inactive selection for currently playing track
+set color_win_inactive_cur_sel_bg=default
+set color_win_inactive_cur_sel_fg=13
+
+# active selection
+set color_win_sel_bg=default
+set color_win_sel_fg=3
+set color_win_sel_attr=underline
+
+# inactive selection
+set color_win_inactive_sel_bg=default
+set color_win_inactive_sel_fg=1
+
+# directory listing color
+set color_win_dir=default
+
+set output_plugin=alsa
+set dsp.alsa.device=default
+set mixer.alsa.device=default
+set mixer.alsa.channel=Master

@@ -1,0 +1,22 @@
+* {
+    /*#87b5d7;*/  
+    /*#6eacda;*/
+    /*#deca72;*/
+    /*#39c9fe;*/
+
+    yellow:     #b58900;
+    orange:	    #cb4b16;
+    red:	    #dc322f;
+    magenta:	#d33682;
+    violet:	    #6c71c4;
+    blue:	    #268bd2;
+    cyan:	    #2aa198;
+    green:	    #859900;
+    fg:         #abb2bfaa;
+    bg:         #282c3444;
+    selected-bg: #4b5263aa;
+    selected-fg: #abb2bf;
+    win-bg : #282c34cc;
+    highlight-bg: #4F576999;
+    urgent:	    #dc322f55;
+}

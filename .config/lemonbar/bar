@@ -1,0 +1,303 @@
+#!/bin/bash
+
+###
+# Custom bash bar script for lemonbar-xft
+# Created by : Dusty
+# From author: 
+# About Lemonbar. It's a simple, flexible, lightwieght and powerful tool
+# that allows you using only a script, a binary and a loop
+# to modify all the bar options, manipulate with output and handle commands with external vars and additional scripts
+# you may add logs in command handler loop and if conditions
+# and it also allows you to create as much bars, as you want each with a specified custom functionality and outlook 
+###
+
+######
+# Vars
+######
+
+###
+# Spotify control 
+# is binded to eww scripts, so if you want to delete them, then move script and rebind vars
+# or just replace them with dbus or playerctl commands
+# script already checks, if Spotify is running    
+eww_scripts="$HOME/.config/eww/scripts"
+next="$eww_scripts/music_info --next"
+toggle="$eww_scripts/music_info --toggle"
+prev="$eww_scripts/music_info --prev"
+
+# Volume change rate and method
+vol_ch="5%"
+sound_up="amixer set Master $vol_ch+"
+sound_down="amixer set Master $vol_ch-"
+sound_toggle="amixer set Master toggle"
+
+# Arch icon action (you may change icon in main loop)
+launch_menu="$HOME/.config/eww/launch_eww"
+
+# Main colors
+fg="#abb2bf"
+bg="#282c34"
+red="#dc322f"
+yellow="#b58900"
+ws_bg="#554b5263"
+ws_urgent="#aadc322f"
+ws_color=("#52E080" "#D70040" "#117dca" "#32a7d9" "#23cf5f" "#80461b" "#f4c430" "#DA70D6" "#800020" "#F5F5F5")
+
+#######
+# Clock
+#######
+
+###
+# time ;; Time
+
+clock() {
+        time=$(date "+%a %b %d, %T")
+        echo -n "$time" # Clock output
+}
+
+#########
+# Spotify
+#########
+
+###
+# All actions are binded to eww scripts, so if you want to delete them, then move script and rebind vars
+###
+
+###
+# artist ;; Artist
+# song ;; Song
+# music ;; Output info
+
+get_music() {
+	if [[ "$(pidof spotify || echo 1)" != "1" ]]; then
+		artist=`$eww_scripts/music_info --artist`
+		song=`$eww_scripts/music_info --song`
+		if [[ -n $artist ]]; then
+			music="%{A:$toggle:}%{A4:$next:}%{A5:$prev:}  ${artist:0:15}$(if [[ ${#artist} -gt 15 ]]; then echo "..."; fi) - ${song:0:15}$(if [[ ${#song} -gt 15 ]]; then echo "..."; fi) %{A}%{A}%{A}" # Song output
+		else
+			music="%{A:$toggle:}%{A4:$next:}%{A5:$prev:}  $song %{A}%{A}%{A}"
+		fi
+	else
+		# if Spotify isn't running
+		# music="%{A:spotify:}  %{A}"
+		music=""
+	fi
+	echo -n $music
+}
+
+###################
+# Workspace section
+###################
+
+###
+# x ;; Iterator
+# ws_info ;; i3 workspaces info keeper (JSON)
+# ws_info_filt ;; Filtred info (ws_info exists on purpose if you'd like to replace my calculation method with jq)
+# end ;; Amount of active workspaces
+# names_a ;; Workspaces names
+# nums_a ;; Workspaces number
+# active_a ;; Info about currently selected and visible workspaces (bool)
+# ws_name ;; Workspace name (loop var)
+# Ws_num ;; Workspace number (loop var)
+# is_active ;; Is workspace visible? (loop var) (bool)
+# ws ;; Output info
+
+workspaces() { 
+	local x=1; ws=" "
+	
+	local ws_info=$(i3-msg -t get_workspaces)
+	local ws_info_filt=$(echo "$ws_info" | sed "s/\[//; s/\]//; s/},{/}\n{/g")
+
+	# Faster, but more unstable and looks scary
+	names_a=$(echo "$ws_info_filt" | cut -d '"' -f 8 | sed "s/://; s/,//")
+	nums_a=$(echo "$ws_info_filt" | cut -d '"' -f 5 | sed "s/://; s/,//; s/\n/ /")
+	active_a=$(echo "$ws_info_filt" | cut -d '"' -f 11 | sed "s/://; s/,//")	
+	urgent_a=$(echo "$ws_info_filt" | cut -d '"' -f 29 | sed "s/://; s/}//")	
+
+	# More slowly and needs jq, but maybe more stable :)
+	# names_a=$(echo "$ws_info" | jq ".[].name")
+	# nums_a=$(echo "$ws_info" | jq ".[].num")
+	# active_a=$(echo "$ws_info" | jq ".[].visible")
+	# urgent_a=$(echo "$ws_info" | jq ".[].urgent")	
+
+	# Length
+	end=$(wc -l <<< "$names_a")
+	while [[ x -le $end ]]; do
+		ws_name=$(head -n $x <<< $names_a | tail -n 1)
+		ws_num=$(head -n $x <<< $nums_a | tail -n 1)
+		is_urgent=$(head -n $x <<< $urgent_a | tail -n 1)
+		is_active=$(head -n $x <<< $active_a | tail -n 1)
+		if [[ $is_active == "true" ]]; then
+			# if is visible
+			ws="$ws%{A:i3-msg workspace number $ws_num:}%{B$ws_bg}%{F${ws_color[((ws_num-1))]}}%{U${ws_color[((ws_num-1))]}}%{+o} ${ws_name:(-1)} %{-o}%{U-}%{F$fg}%{B-}%{A}"
+		else	
+			# if isn't visible
+			if [[ $is_urgent == "true" ]]; then
+				ws="$ws%{A:i3-msg workspace number $ws_num:}%{B${ws_color[((ws_num-1))]}}%{F$ws_bg} ${ws_name:(-1)} %{F$fg}%{B-}%{A}"	
+			else
+				ws="$ws%{A:i3-msg workspace number $ws_num:} ${ws_name:(-1)} %{A}"
+			fi
+		fi
+		((x++))
+	done
+	echo -n $ws # Workspace output
+}
+
+########
+# Volume
+########
+
+###
+# Uses amixer (by wish rewrite on your prefer commands)
+# Popups on change
+###
+
+###
+# l_vol ;; Left
+# r_vol ;; Right
+# l_state ;; On or off (left)
+# r_state ;; On or off (right)
+# sym ;; Volume symbol
+# t_vol ;; Temp value
+# vol ;; Last value
+# vol_out ;; Output info
+# vol_d ;; Popup volume visibility duration (in cycles)  
+
+vol_popup_delay=3   # in cycles (1 cycle = 0.25sec)
+
+volume() {
+	local vol_info=$(amixer sget Master)
+	local l_vol=$(awk -F"[][]" '/Left:/ { print $2 }' <(echo "$vol_info") | sed "s/%//")
+	local r_vol=$(awk -F"[][]" '/Right:/ { print $2 }' <(echo "$vol_info") | sed "s/%//")
+	local l_state=$(awk -F"[][]" '/Left:/ { print $4 }' <(echo "$vol_info"))
+	local r_state=$(awk -F"[][]" '/Right:/ { print $4 }' <(echo "$vol_info"))
+	if [[ $l_vol == $r_vol ]]; then
+		t_vol="$l_vol"
+	else
+		t_vol="$l_vol/$r_vol"
+	fi
+	if [[ $l_state == "on" ]] && [[ $r_state == "on" ]]; then
+		local sym="墳"	
+	else
+		local sym="%{F$yellow}ﱝ"
+	fi
+	if [[ $vol == $t_vol ]]; then
+		if [[ $vol_d -lt $vol_popup_delay ]]; then
+			vol_out="$sym $t_vol%"
+			((vol_d++))
+		else
+			vol_out="$sym"
+		fi
+	else
+		vol_out="$sym $t_vol%"
+		vol_d=1
+	fi
+	vol=$t_vol
+	# echo -n "$output"
+}
+
+###########
+# CPU Usage
+###########
+
+###
+# It takes 1 second to calculate current usage (4 cycles = 0.25 * 4 = 1 sec) / don't blame me please for making handmade cpu usage calculation usage, it's all in the name of optimization and delayless loop
+# It skips some cycles, keeping the last value and after some period of time calculates the general cpu usage (also system and kernel usage included)
+# Popups on high change rate (change popup_cpu on 0, if you want always to see cpu usage)
+###
+
+### 
+# cpu_out ;; Output info
+
+popup_cpu=7			# pop up on overcoming this difference rate between last and current usage (in %)
+a_cpu=70			# dangerous usage level (in %)
+w_cpu=40			# yellow icon if bigger than this value (in %)
+t_cpu=1				# iterator (1 cycle = 0.25 sec)
+c_cpu=4				# iteration amound (in cycles)
+l_cpu=0				# last cpu usage value (in %) / set average usage if you want to avoid meanless usage showing on start
+cpu_out=" "			# preinitialization for cpu output
+p_cpu=$(grep 'cpu ' /proc/stat)	# previous cpu usage value
+
+cpu_stat() {
+	if [[ $t_cpu -gt $c_cpu ]]; then
+		cpu=$(awk '{u=$2+$4; t=$2+$4+$5; if (NR==1){u1=u; t1=t;} else print ($2+$4-u1) * 100 / (t-t1); }' <(grep 'cpu ' /proc/stat) <(echo "$p_cpu") | cut -d "." -f 1)
+		p_cpu=$(grep 'cpu ' /proc/stat)
+		t_cpu=1
+		if [[ $cpu -ge $a_cpu ]]; then
+			cpu_out="%{F$red} $(echo "$cpu")% %{F$fg}"
+		else	
+			if [[ $(echo $((cpu-popup_cpu))) -ge $l_cpu ]]; then
+				cpu_out=" $(echo "$cpu")% "
+			else
+				cpu_out=" "
+			fi
+			if [[ $cpu -ge $w_cpu ]]; then
+				cpu_out="%{F$yellow}${cpu_out}%{F$fg}"
+			fi
+		fi
+		l_cpu="$cpu"
+	else
+		((t_cpu++))
+	fi
+	# echo -n " $cpu%"
+}
+
+###########
+# RAM
+###########
+
+l_ram=$(free -t | awk 'NR == 2 {printf("%.0f"), $3/$2*100}')
+ram_popup_delay=4
+ram_x=1
+a_ram=60
+w_ram=30
+
+ram_stat() {
+	ram_out=" "
+	ram=$(free -t | awk 'NR == 2 {printf("%.0f"), $3/$2*100}')
+	if [[ $(echo $ram | cut -d "." -f 1) -ge $a_ram ]]; then
+		ram_out="%{F$red}${ram_out}$ram% %{F$fg}"
+		l_ram=$ram
+	else
+		if [[ $l_ram != $ram ]]; then
+			l_ram=$ram
+			ram_x=1
+		fi
+		if [[ $ram_x -le $ram_popup_delay ]]; then
+			ram_out="${ram_out}$ram% "
+			((ram_x++))
+		fi
+		if [[ $(echo $ram | cut -d "." -f 1) -ge $w_ram ]]; then
+			ram_out="%{F$yellow}$ram_out%{F$fg}"
+		fi
+	fi
+}
+
+
+###########
+# Main loop
+###########
+
+###
+# clock ;; Time
+# get_music ;; Spotify
+# workspaces ;; Workspaces
+# volume ;; Volume
+# cpu_stat ;; CPU Usage
+
+while true; do
+	volume; cpu_stat; ram_stat	# Used externally to keep and change global vars like last value, iterations and etc. (Output is stored in vars, not via echo)
+
+	# Taskbar
+        echo 	"%{c}%{F$fg}%{B-} $(clock)\
+		%{l}%{A:$launch_menu:}  %{A}$(workspaces)\
+		%{r}$(get_music) $cpu_out $ram_out%{A:$sound_toggle:}%{A4:$sound_up:}%{A5:$sound_down:} $vol_out %{A}%{A}%{A}%{F-}%{B-}"
+	
+	# Delay (in seconds)
+	sleep .25
+done
+
+###
+# For more lemonbar-xft info and documentation check this link below:
+# https://github.com/drscream/lemonbar-xft
+###
