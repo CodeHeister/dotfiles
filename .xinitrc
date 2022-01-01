@@ -54,6 +54,6 @@ twm &
 #xterm -geometry 80x20+494-0 &
 #exec xterm -geometry 80x66+0+0 -name login
 
-xsetroot -cursor_name Breeze
-setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle
+# xsetroot -cursor_name Breeze
+# setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle
 exec i3
