@@ -29,23 +29,68 @@
 ## Table of contents
 * [General info](#general-info)
 * [Installation](#installation)
+* [Afterwords](#afterwords)
 
 # General info
-This dotfiles include `.xinit` and `.config` files, with some commented code. You may uncomment and test it.
-I hope, that i'll improve this configs, add something and clean from useless code, so look for updates.
+This dotfiles include `.Xresources` files for urxvt and `.config` files, with some commented code. You may uncomment and test it.
+Change keyboard layout in `.xinit` or delete it, if you use only one language.
+Hopefully I can improve these configs, add something and remove the useless code, so stay tuned for more updates.
+For additional info i suggest you to check Arch Wiki pages about this utils to set them correctly up.
 
 # Installation
-1. **Utils**
+1. **Utils list:**
     - WM : [i3-gaps](https://github.com/Airblader/i3)
     - Fonts : [Iosevka](https://typeof.net/Iosevka/), [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
     - Icons : [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
-    - Music player : [cmus](https://github.com/cmus/cmus)
-    - Screenshot software : [maim](https://github.com/naelstrof/maim), [flameshot](https://github.com/flameshot-org/flameshot)
-    - Widgets : [eww](https://github.com/elkowar/eww) [(docs)](https://elkowar.github.io/eww/) 
+    - Music player : [cmus](https://github.com/cmus/cmus) ([some themes](https://github.com/averms/base16-cmus))
+    - Notification daemon : [dunst](https://github.com/dunst-project/dunst)
+	- Terminal emulator : urxvt
+	- File manager : 
+		- GUI : thunar
+		- Terminal : [ranger](https://github.com/ranger/ranger)
+	- Screenshot software : [maim](https://github.com/naelstrof/maim), [flameshot](https://github.com/flameshot-org/flameshot)
+    - Widgets : [eww](https://github.com/elkowar/eww) ([docs](https://elkowar.github.io/eww/)) 
         - 1920x1080 : [adi1090x's widgets](https://github.com/adi1090x/widgets)
         - 1360x768 : [edited widgets](.config/eww) with Spotify
     - Statusbar : [lemonbar-xft](https://github.com/drscream/lemonbar-xft)
-    - Text editor : [neovim](https://github.com/neovim/neovim)
+    - Text editor : [neovim](https://github.com/neovim/neovim) ([Navarasu's onedark](https://github.com/navarasu/onedark.nvim), [Joshdick's onedark](https://github.com/joshdick/onedark.vim))
     - Compositor : [Ibhagwan's picom](https://github.com/ibhagwan/picom-ibhagwan-git)
     - App launcher : [rofi](https://github.com/davatorium/rofi)
     - Wallpapers : [lambda wallpapers](https://github.com/pagankeymaster/lambda-wallpapers), [Aenami](https://www.reddit.com/user/Aenami/)
+	- Document viewer : [zathura](https://github.com/pwmt/zathura) ([Dracula theme](https://github.com/dracula/zathura))
+
+	Everything is described for Arch Linux.
+	- AUR:
+		If you don't have `yay` or any other AUR package manager, you're supposed to install it manually.
+		- [Iosevka](https://aur.archlinux.org/ttf-iosevka/)
+		- [Hack Nerd Fonts](https://aur.archlinux.org/nerd-fonts-hack/)
+		- [lemonbar-xft](https://aur.archlinux.org/lemonbar-xft-git/)
+		- [eww](https://aur.archlinux.org/packages/eww-git/)
+		- [picom](https://aur.archlinux.org/packages/picom-ibhagwan-git/)
+		- [Papirus](https://archlinux.org/packages/community/any/papirus-icon-theme/)
+	- Pacman:
+		- i3-gaps (may replace your current i3, won't occur any major changes except adding gaps)
+		- cmus
+		- maim
+		- flameshot
+		- neovim
+		- rofi
+		- urxvt
+		- thunar
+		- ranger
+		- zathura
+		- dunst
+
+	- For AUR:
+		- `yay -S <package>` or `git clone <AUR_git_link>; cd <AUR_package>; makepkg -si`
+	- For Pacman:
+		- `pacman -S <package>`
+
+2. **Adding configs:**
+	- Clone this repository. `https://github.com/CodeHeister/dotfiles`
+	- If there's still no `.config` or other directories in your home directory (`~`), you may move all directories to your `~`. Otherwise just copy or include files of your interest. Respect file disposition to save configs from path error or replace all paths with your.
+	- If everything is correctly installed and configs are added, all may work without troubles.
+
+# Afterwords
+
+I'm looking forward for your tips and i'm ready to help you or add some info here, if you'll consider it necessary. I'll necessary clear and improve configs to make it more flexible and convenient. 
