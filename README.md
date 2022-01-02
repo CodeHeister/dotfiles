@@ -28,6 +28,7 @@
 
 ## Table of contents
 * [General info](#general-info)
+* [Screenshots](#screenshots)
 * [Installation](#installation)
 * [Afterwords](#afterwords)
 
@@ -37,13 +38,35 @@ Change keyboard layout in `.xinit` or delete it, if you use only one language.
 Hopefully I can improve these configs, add something and remove the useless code, so stay tuned for more updates.
 For additional info i suggest you to check Arch Wiki pages about this utils to set them correctly up.
 
+# Screenshots
+
+![eww](screenshots/eww.png)
+*eww widgets*
+
+![urxvt](screenshots/terminal.png)
+*terminal emulator*
+
+![zathura](screenshots/zathura.png)
+*zathura*
+
+![file managers](screenshots/file_managers.png)
+*ranger and thunar*
+
+![rofi apps](screenshots/searcher.png)
+*rofi app search*
+
+![powermenu](screenshots/powermenu.png)
+*rofi powermenu*
+
 # Installation
+
 1. **Utils list:**
     - WM : [i3-gaps](https://github.com/Airblader/i3)
     - Fonts : [Iosevka](https://typeof.net/Iosevka/), [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
     - Icons : [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
     - Music player : [cmus](https://github.com/cmus/cmus) ([some themes](https://github.com/averms/base16-cmus))
-    - Notification daemon : [dunst](https://github.com/dunst-project/dunst)
+    - Audio visualizer : [cava](https://github.com/karlstav/cava)
+	- Notification daemon : [dunst](https://github.com/dunst-project/dunst)
 	- Terminal emulator : urxvt
 	- File manager : 
 		- GUI : thunar
@@ -53,19 +76,20 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
         - 1920x1080 : [adi1090x's widgets](https://github.com/adi1090x/widgets)
         - 1360x768 : [edited widgets](.config/eww) with Spotify
     - Statusbar : [lemonbar-xft](https://github.com/drscream/lemonbar-xft)
-    - Text editor : [neovim](https://github.com/neovim/neovim) ([Navarasu's onedark](https://github.com/navarasu/onedark.nvim), [Joshdick's onedark](https://github.com/joshdick/onedark.vim))
+    - Text editor : [neovim](https://github.com/neovim/neovim) ([Plugin manager](https://github.com/junegunn/vim-plug)), ([Navarasu's onedark](https://github.com/navarasu/onedark.nvim), [Joshdick's onedark](https://github.com/joshdick/onedark.vim), [Crusoexia's monokai](https://github.com/crusoexia/vim-monokai))
     - Compositor : [Ibhagwan's picom](https://github.com/ibhagwan/picom-ibhagwan-git)
     - App launcher : [rofi](https://github.com/davatorium/rofi)
     - Wallpapers : [lambda wallpapers](https://github.com/pagankeymaster/lambda-wallpapers), [Aenami](https://www.reddit.com/user/Aenami/)
 	- Document viewer : [zathura](https://github.com/pwmt/zathura) ([Dracula theme](https://github.com/dracula/zathura))
+	- Terminal decoration : [pipes.sh](https://github.com/pipeseroni/pipes.sh), [cmatrix](https://github.com/abishekvashok/cmatrix), [cbonsai](https://gitlab.com/jallbrit/cbonsai) 
 
 	Everything is described for Arch Linux.
 	- AUR:
-		If you don't have `yay` or any other AUR package manager, you're supposed to install it manually.
 		- [Iosevka](https://aur.archlinux.org/ttf-iosevka/)
 		- [Hack Nerd Fonts](https://aur.archlinux.org/nerd-fonts-hack/)
 		- [lemonbar-xft](https://aur.archlinux.org/lemonbar-xft-git/)
 		- [eww](https://aur.archlinux.org/packages/eww-git/)
+		- [cava](https://aur.archlinux.org/packages/cava/)
 		- [picom](https://aur.archlinux.org/packages/picom-ibhagwan-git/)
 		- [Papirus](https://archlinux.org/packages/community/any/papirus-icon-theme/)
 	- Pacman:
@@ -73,18 +97,18 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 		- cmus
 		- maim
 		- flameshot
-		- neovim
+		- neovim (ctags)
 		- rofi
 		- urxvt
 		- thunar
-		- ranger
+		- ranger (w3m)
 		- zathura
 		- dunst
 
 	- For AUR:
-		- `yay -S <package>` or `git clone <AUR_git_link>; cd <AUR_package>; makepkg -si`
+		- `yay -S "package"` or `git clone "AUR_git_link"; cd "AUR_package"; makepkg -si`
 	- For Pacman:
-		- `pacman -S <package>`
+		- `pacman -S "package"`
 
 2. **Adding configs:**
 	- Clone this repository. `https://github.com/CodeHeister/dotfiles`
