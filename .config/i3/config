@@ -293,8 +293,8 @@ hide_edge_borders smart
 
 # Screen Capture
 # bindsym $control+Print exec --no-startup-id maim -i $(xdotool getactivewindow) ~/Picture/Screenshots/$(date "+Screenshot_%s").jpg
-bindsym Print exec --no-startup-id maim | tee ~/Pictures/Screenshots/$(date "+Screenshot-%G-%m-%d_%k.%M.%S").png | xclip -selection clipboard -t image/png
-bindsym $control+Print exec --no-startup-id maim -s | tee ~/Pictures/Screenshots/$(date "+Screenshot-%G-%m-%d_%k.%M.%S").png | xclip -selection clipboard -t image/png
+bindsym Print exec --no-startup-id maim --hidecursor | tee ~/Pictures/Screenshots/$(date "+Screenshot-%G-%m-%d_%H.%M.%S").png | xclip -selection clipboard -t image/png
+bindsym $control+Print exec --no-startup-id maim -s --hidecursor | tee ~/Pictures/Screenshots/$(date "+Screenshot-%G-%m-%d_%H.%M.%S").png | xclip -selection clipboard -t image/png
 
 # bindsym Print exec --no-startup-id flameshot full -c -p ~/Pictures/Screenshots
 bindsym $control+$shift+Print exec --no-startup-id flameshot gui
