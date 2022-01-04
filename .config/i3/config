@@ -21,7 +21,7 @@ client.background       #ffffff
 focus_on_window_activation focus
 
 # Main
-set $rofi $HOME/.config/rofi
+set $rofi ~/.config/rofi
 set $term urxvt
 set $eww $HOME/.config/eww
 set $wallpaper $HOME/.config/wallpaper
