@@ -130,7 +130,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 # Hotkeys
 
-Almost all hotkey are in `.config/i3/config`:
+- This hotkeys are in `.config/i3/config`:
 	- `Mod+[0-9]` : go to workspace
 	- `Mod+Shift+[0-9]` : move active window to workspace
 	- `Alt+Ctrl+[Left-Right]` : move to the left/right workspace
