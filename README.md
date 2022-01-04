@@ -29,7 +29,7 @@
 ## Table of contents :
 * [General info](#general-info)
 * [Screenshots](#screenshots)
-* [Installation](#installation)
+* [Steps for the installation](#installation)
 * [Tips](#tips)
 * [Hotkeys](#hotkeys)
 * [ToDo List](#todo-list)
@@ -71,9 +71,9 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 ![powermenu](screenshots/powermenu.png)
 *rofi powermenu*
 
-# Steps for the Installation
+# Steps for the installation
 
-1. **Utils list:**
+1. **Utils list :**
     - WM : [i3-gaps](https://github.com/Airblader/i3)
     - Fonts : [Iosevka](https://typeof.net/Iosevka/), [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
     - Icons : [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
@@ -97,7 +97,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- Terminal decoration : [pipes.sh](https://github.com/pipeseroni/pipes.sh), [cmatrix](https://github.com/abishekvashok/cmatrix), [cbonsai](https://gitlab.com/jallbrit/cbonsai) 
 
 	Everything is described for Arch Linux.
-	- AUR:
+	- AUR :
 		- [Iosevka](https://aur.archlinux.org/ttf-iosevka/)
 		- [Hack Nerd Fonts](https://aur.archlinux.org/nerd-fonts-hack/)
 		- [lemonbar-xft](https://aur.archlinux.org/lemonbar-xft-git/)
@@ -105,7 +105,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 		- [cava](https://aur.archlinux.org/packages/cava/)
 		- [picom](https://aur.archlinux.org/packages/picom-ibhagwan-git/)
 		- [Papirus](https://archlinux.org/packages/community/any/papirus-icon-theme/)
-	- Pacman:
+	- Pacman :
 		- i3-gaps (may replace your current i3, won't occur any major changes except adding gaps)
 		- cmus
 		- maim
@@ -118,12 +118,12 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 		- zathura
 		- dunst
 
-	- For AUR:
+	- For AUR :
 		- `yay -S "package"` or `git clone "AUR_git_link"; cd "AUR_package"; makepkg -si`
-	- For Pacman:
+	- For Pacman :
 		- `pacman -S "package"`
 
-2. **Adding configs:**
+2. **Adding configs :**
 	- Clone this repository. `https://github.com/CodeHeister/dotfiles`
 	- If there's still no `.config` or other directories in your home directory (`~`), you may move all directories to your `~`. Otherwise just copy or include files of your interest. Respect file disposition to save configs from path error or replace all paths with your.
 	- If everything is correctly installed and configs are added, all may work without troubles.
@@ -136,7 +136,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 # Hotkeys
 
-- This hotkeys are in `.config/i3/config`:
+- This hotkeys are in `.config/i3/config` :
 	- `Mod+[0-9]` : go to workspace
 	- `Mod+Shift+[0-9]` : move active window to workspace
 	- `Alt+Ctrl+[Left-Right]` : move to the left/right workspace
@@ -189,7 +189,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- `Mod+Shift+T` : launch terminal
 	- `Mod+Shift+Q` : close current app
 	- `Mod+M` : launch/exit eww
-- This hotkeys are in `.xinitrc`:
+- This hotkeys are in `.xinitrc` :
 	- `Alt+Tab` : change keyboard layout (disabled) uncomment `setxkbmap` and add your layouts)
 
 # ToDo List
