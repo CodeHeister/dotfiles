@@ -65,6 +65,7 @@ nmap <F8> :TagbarToggle<CR>
 call plug#end()
 
 colorscheme onedark
+set termguicolors
 
 " nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
