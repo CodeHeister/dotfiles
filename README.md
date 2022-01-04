@@ -133,6 +133,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 - Don't forget to add your API keys to `.config/eww/scripts`.
 - Add your keyboard layouts to `.xinitrc`.
 - You can easily configure lemonbar output in `.config/lemonbar/bar` and add your own functionality. There's also an array of colors. Each color is binded to workspace number, so change workspace's names correctly.
+- If you want to move rofi configs, don't forget to move colors.rasi with them in the same directory. Overwise you'll get default colors.
 
 # Hotkeys
 
