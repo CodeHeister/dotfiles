@@ -20,10 +20,17 @@ client.background       #ffffff
 
 focus_on_window_activation focus
 
+# Main
+set $rofi $HOME/.config/rofi
 set $term urxvt
+set $eww $HOME/.config/eww
+set $wallpaper $HOME/.config/wallpaper
+set $dunst $HOME/.config/dunst
+set $picom $HOME/.config/picom
+set $lemonbar "~/.config/lemonbar/bar | lemonbar -p -a 21 -f 'Iosevka Medium:pixelsize=14' -f 'Hack Nerd Font:pixelsize=15' | while read line; do eval '${line}'; done && notify-send -u low 'Lemonbar' 'Your statusbar was stopped' || notify-send -u low 'Lemonbar' 'Something went wrong'"
 
 # Use super/alt/control key
-set $super Mod4
+set $mod Mod4
 set $alt Mod1
 set $control Control
 set $shift Shift
@@ -39,15 +46,16 @@ set $size_font 9
 # Font
 font pango:$font $size_font
 
-set $mod Mod4
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
 
+# Wallpapers
+exec --no-startup-id feh -z --bg-scale $wallpaper
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+# font pango:DejaVu Sans Mono 8
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -62,17 +70,16 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec_always --no-startup-id pkill picom; picom --experimental-backends --backend glx --no-use-damage --config $HOME/.config/picom/picom.conf &
-exec --no-startup-id feh -z --bg-scale $HOME/.config/wallpaper
+exec_always --no-startup-id pkill picom; picom --experimental-backends --backend glx --no-use-damage --config $picom/picom.conf &
 exec --no-startup-id nm-applet
-exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec_always --no-startup-id dunst -config $dunst/dunstrc
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -82,14 +89,6 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# start dmenu (a program launcher)
-# bindsym $mod+40 exec --no-startup-id dmenu
-# A more modern dmenu replacement is rofi:
-# bindsym $mod+d exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -139,7 +138,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -184,10 +183,6 @@ bindsym $alt+Control+Left workspace prev
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec rofi -modi 'Powermenu:~/.config/i3/powermenu.sh' -theme ~/.config/rofi/powermenu.rasi -show Powermenu -icon-theme "Papirus"
-# bindsym $mod+Shift+e exec ~/.config/rofi/bin/launcher_misc 
-# exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -216,28 +211,35 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+##########
 # Lemonbar
+##########
 
-set $lemonbar "~/.config/lemonbar/bar | lemonbar -p -a 21 -f 'Iosevka Medium:pixelsize=14' -f 'Hack Nerd Font:pixelsize=15' | while read line; do eval '${line}'; done && notify-send -u low 'Lemonbar' 'Your statusbar was stopped' || notify-send -u low 'Lemonbar' 'Something went wrong'"
+# On start
 exec_always --no-startup-id pkill lemonbar
 exec_always --no-startup-id $lemonbar
+
+# Start lemonbar
 bindsym $mod+$shift+A exec --no-startup-id $lemonbar
-bindsym $mod+$shift+D exec --no-startup-id killall lemonbar
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Close lemonbar
+bindsym $mod+$shift+D exec --no-startup-id pkill lemonbar
 
-set $bg #282c34bb
-set $bg_down #282c34
-set $red #dc322f
-set $green #98971a
-set $yellow #abb2bf
-set $blue #458588
-set $purple #b16286
-set $aqua #4b5263
-set $gray #a89984
-set $darkgray #282c34aa
-set $white #ffffff
+##################
+# Bumblebee-status
+##################
+
+# set $bg #282C34BB
+# set $bg_down #282C34
+# set $red #DC322F
+# set $green #98971A
+# set $gray1 #ABB2BF
+# set $lightblue #458588
+# set $purple #B16286
+# set $gray2 #4B5263
+# set $lightbrown #A89984
+# set $darkgray #282c34aa
+# set $white #ffffff
 
 hide_edge_borders smart
 
@@ -249,12 +251,12 @@ hide_edge_borders smart
         # # bar background color
         # background $bg
         # # text color used for blocks that do not have a color specified.
-        # statusline $yellow
+        # statusline $gray1
         # # workspaces section            
         # #                    border  backgr. text
-        # focused_workspace    $aqua $aqua $darkgray
-        # inactive_workspace   $darkgray $darkgray $yellow
-        # active_workspace     $darkgray $darkgray $yellow
+        # focused_workspace    $gray2 $gray2 $darkgray
+        # inactive_workspace   $darkgray $darkgray $gray1
+        # active_workspace     $darkgray $darkgray $gray1
         # urgent_workspace     $red $red $bg
 #     }
   # workspace_buttons no
@@ -274,12 +276,12 @@ hide_edge_borders smart
         # # bar background color
         # background $bg
         # # text color used for blocks that do not have a color specified.
-        # statusline $yellow
+        # statusline $gray1
         # # workspaces section            
         # #                    border  backgr. text
-        # focused_workspace    $aqua $aqua $darkgray
-        # inactive_workspace   $darkgray $darkgray $yellow
-        # active_workspace     $darkgray $darkgray $yellow
+        # focused_workspace    $gray2 $geay2 $darkgray
+        # inactive_workspace   $darkgray $darkgray $gray1
+        # active_workspace     $darkgray $darkgray $gray1
         # urgent_workspace     $red $red $bg
 #    }
   # # workspace_buttons no
@@ -287,17 +289,26 @@ hide_edge_borders smart
   # font pango:IosevkaMedium 10
   # position bottom
   # tray_output none
-  # status_command bumblebee-status -m nic disk:root cpu sensors memory -e pasink pasource -p root.path=/ -t onedark-powerline # neo-solarized
+  # status_command bumblebee-status -m nic disk:root cpu sensors memory -e pasink pasource -p root.path=/ -t onedark-powerline
   # # battery brightness  time.format="%H:%M CW %V"
 # }
 
+################
 # Screen Capture
-# bindsym $control+Print exec --no-startup-id maim -i $(xdotool getactivewindow) ~/Picture/Screenshots/$(date "+Screenshot_%s").jpg
+################
+
+# Fullscreen screenshot
 bindsym Print exec --no-startup-id maim --hidecursor | tee ~/Pictures/Screenshots/$(date "+Screenshot-%G-%m-%d_%H.%M.%S").png | xclip -selection clipboard -t image/png
+
+# App or area screenshot
 bindsym $control+Print exec --no-startup-id maim -s --hidecursor | tee ~/Pictures/Screenshots/$(date "+Screenshot-%G-%m-%d_%H.%M.%S").png | xclip -selection clipboard -t image/png
 
-# bindsym Print exec --no-startup-id flameshot full -c -p ~/Pictures/Screenshots
+# Flameshot binding
 bindsym $control+$shift+Print exec --no-startup-id flameshot gui
+
+##############################
+# Scratchpad and window hiding
+##############################
 
 # bindsym $mod+/ move scratchpad
 # bindsym $mod+$shift+/ scratchpad show
@@ -335,26 +346,35 @@ for_window [class="Steam|steam_proton*|steam_app*|Zenity|Lutris"] move to worksp
 for_window [title="Steam*|Rockstar Games Launcher"] move to workspace $ws9, focus
 for_window [title="Steam Library Folders|Create or select new Steam library folder:*|Criar/Selecionar nova pasta de biblioteca Steam:*|Pastas de biblioteca Steam*"] move to workspace $ws9, floating enable, focus
 
-## rofi bindings fancy application menu (two bindings F9/$mod+d)
+###############
+# Rofi bindings
+###############
 
-bindsym $mod+F3 exec rofi -no-lazy-grab -show drun -theme "~/.config/rofi/searcher.rasi"
+# Launch an app
+bindsym $mod+F3 exec rofi -no-lazy-grab -show drun -theme "$rofi/searcher.rasi"
 
-## rofi bindings for window menu (two bindings F10/$mod+t)
+# Active apps
+bindsym $mod+$shift+F3 exec rofi -no-lazy-grab -show window -theme "$rofi/active_apps.rasi" 
 
-bindsym $mod+$shift+F3 exec rofi -no-lazy-grab -show window -theme "~/.config/rofi/active_apps.rasi" 
+# Powermenu
+bindsym $mod+Shift+e exec rofi -modi 'Powermenu:$rofi/powermenu.sh' -theme $rofi/powermenu.rasi -show Powermenu -icon-theme "Papirus"
 
+# Swap between current and last workspace (Mod+Tab)
 bindcode $mod+23 workspace back_and_forth
 
+# Borders for windows
 for_window [class=".*"] border pixel 0
+
+######
+# Gaps
+######
 
 gaps inner 20
 gaps outer 4
 
 smart_gaps on
-#smart_gaps inverse_outer
 
 smart_borders on
-#border_radius 4
 
 ######################################
 # color settings for bar and windows #
@@ -366,10 +386,10 @@ smart_borders on
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
 
-set_from_resource $color0 i3wm.color0 #f0f0f0
-set_from_resource $color2 i3wm.color2 #f0f0f0
-set_from_resource $color7 i3wm.color7 #f0f0f0
-set_from_resource $color8 i3wm.color8 #f0f0f0
+# set_from_resource $color0 i3wm.color0 #f0f0f0
+# set_from_resource $color2 i3wm.color2 #f0f0f0
+# set_from_resource $color7 i3wm.color7 #f0f0f0
+# set_from_resource $color8 i3wm.color8 #f0f0f0
 
 
 # class                 border  backgr. text    indicator  child_border
@@ -392,14 +412,16 @@ set_from_resource $color8 i3wm.color8 #f0f0f0
 
 # blue gruvbox
 # class                 border|backgr|text|indicator|child_border
-client.focused          $blue $blue $darkgray $purple $darkgray
-client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-client.urgent           $red $red $white $red $red
+#client.focused          $blue $blue $darkgray $purple $darkgray
+#client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+#client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+#client.urgent           $red $red $white $red $red
 
-#end of window title bars & borders section
+# end of window title bars & borders section
 
+#############
 # Volume ctrl
+#############
 
 # mute/unmute
 bindsym $mod+F9 exec --no-startup-id amixer set Master toggle
@@ -410,7 +432,9 @@ bindsym $mod+F10 exec --no-startup-id amixer set Master 5%-
 # up
 bindsym $mod+F11 exec --no-startup-id amixer set Master 5%+
 
-# Change gaps 
+####################
+# Change gaps on fly
+####################
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -448,5 +472,14 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
+#################
+# Launch terminal
+#################
+
 bindsym $mod+$shift+t exec $term
-bindsym $mod+M exec --no-startup-id ~/.config/eww/launch_eww
+
+####################
+# Launch eww widgets
+####################
+
+bindsym $mod+M exec --no-startup-id $eww/launch_eww
