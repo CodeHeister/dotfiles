@@ -185,6 +185,8 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- `Mod+Shift+T` : launch terminal
 	- `Mod+Shift+Q` : close current app
 	- `Mod+M` : launch/exit eww
+- This hotkeys are in `.xinitrc`:
+	- `Alt+Tab` : change keyboard layout (disabled) uncomment `setxkbmap` and add your layouts)
 
 # ToDo List
 
