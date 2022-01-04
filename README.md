@@ -130,6 +130,10 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 # Tips
 
+- Don't forget to add your API keys to `.config/eww/scripts`.
+- Add your keyboard layouts to `.xinitrc`.
+- You can easily configure lemonbar output in `.config/lemonbar/bar` and add your own functionality. There's also an array of colors. Each color is binded to workspace number, so change workspace's names correctly.
+
 # Hotkeys
 
 - This hotkeys are in `.config/i3/config`:
