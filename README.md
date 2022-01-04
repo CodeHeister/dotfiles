@@ -30,6 +30,8 @@
 * [General info](#general-info)
 * [Screenshots](#screenshots)
 * [Installation](#installation)
+* [Tips](#tips)
+* [Hotkeys](#hotkeys)
 * [ToDo List](#todo-list)
 * [Afterwords](#afterwords)
 
