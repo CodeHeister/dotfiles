@@ -36,7 +36,7 @@
 * [Afterwords](#afterwords)
 
 # General info
-This dotfiles include `.Xresources` files for urxvt and `.config` files, with some commented code. You may uncomment and test it.
+This dotfile include's `.Xresources` files for urxvt and `.config` files, with some commented code. You may uncomment and test it.
 Change keyboard layout in `.xinit` or delete it, if you use only one language.
 Hopefully I can improve these configs, add something and remove the useless code, so stay tuned for more updates.
 For additional info i suggest you to check Arch Wiki pages about this utils to set them correctly up.
