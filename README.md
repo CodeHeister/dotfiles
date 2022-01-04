@@ -30,6 +30,7 @@
 * [General info](#general-info)
 * [Screenshots](#screenshots)
 * [Installation](#installation)
+* [ToDo List](#todo-list)
 * [Afterwords](#afterwords)
 
 # General info
@@ -41,20 +42,30 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 # Screenshots
 
 ![eww](screenshots/eww.png)
-*eww widgets*
-
+*eww widgets*\
+\
+\
+\
 ![urxvt](screenshots/terminal.png)
-*terminal emulator*
-
+*terminal emulator*\
+\
+\
+\
 ![zathura](screenshots/zathura.png)
-*zathura*
-
+*zathura*\
+\
+\
+\
 ![file managers](screenshots/file_managers.png)
-*ranger and thunar*
-
+*ranger and thunar*\
+\
+\
+\
 ![rofi apps](screenshots/searcher.png)
-*rofi app search*
-
+*rofi app search*\
+\
+\
+\
 ![powermenu](screenshots/powermenu.png)
 *rofi powermenu*
 
@@ -114,6 +125,11 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- Clone this repository. `https://github.com/CodeHeister/dotfiles`
 	- If there's still no `.config` or other directories in your home directory (`~`), you may move all directories to your `~`. Otherwise just copy or include files of your interest. Respect file disposition to save configs from path error or replace all paths with your.
 	- If everything is correctly installed and configs are added, all may work without troubles.
+
+# ToDo List
+
+- [ ] Add startpage
+- [ ] Add colorscheme toggle
 
 # Afterwords
 
