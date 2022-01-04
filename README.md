@@ -126,6 +126,64 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- If there's still no `.config` or other directories in your home directory (`~`), you may move all directories to your `~`. Otherwise just copy or include files of your interest. Respect file disposition to save configs from path error or replace all paths with your.
 	- If everything is correctly installed and configs are added, all may work without troubles.
 
+# Tips
+
+# Hotkeys
+
+Almost all hotkey are in `.config/i3/config`:
+	- `Mod+[0-9]` : go to workspace
+	- `Mod+Shift+[0-9]` : move active window to workspace
+	- `Alt+Ctrl+[Left-Right]` : move to the left/right workspace
+	- `Mod+Tab` : swap between current and last used workspace
+	- `Mod+Shift+C` : reload i3 config file
+	- `Mod+[Left/Right/Up/Down]` : change focus
+	- `Mod+Shift+[Left/Right/Up/Down]` : move focused window
+	- `Mod+H` : split in horizontal orientation
+	- `Mod+V` : split in vertical orientation
+	- `Mod+F` : fullscreen toggle
+	- `Mod+E` : layout reverse (toggle split)
+	- `Mod+W` : layout tabbed
+	- `Mod+S` : layout stacking
+	- `Mod+D` : focus child
+	- `Mod+A` : focus parent
+	- `Mod+Shift+Space` : toggle tiling/floating for current window
+	- `Mod+Space` : change focus between tiling/floating windows
+	- `Mod+Shift+R` : restart i3
+	- `Mod+R` : resize mode
+		- `[Left/Right/Up/Down]` : resize
+		- `Esc` : exit resize mode (don't forget to press it)
+	- `Mod+Shift+A` : start lemonbar
+	- `Mod+Shift+D` : close lemonbar
+	- `Print` : fullscreen screenshot (saves to ~/Pictures/Screenshots)
+	- `Ctrl+Print` : area or app screenshot (saves to ~/Pictures/Screenshots)
+	- `Ctrl+Shift+Print` : flameshot (interactive screen software with utils)
+	- `Mod+F3` : app searcher
+	- `Mod+Shift+F3` : active apps searcher 
+	- `Mod+Shift+E` : powermenu
+	- `Mod+F9` : mute/unmute
+	- `Mod+F10` : volume down
+	- `Mod+F11` : volume up
+	- `Mod+Shift+G` : change gaps
+		- `O` : outer gaps
+			- `+` : +5 to current value of the current workspace
+			- `-` : -5 to current value of the current workspace
+			- `0` : set gaps 0
+			- `Shift++` : +5 to current value for all workspaces
+			- `Shift+-` : -5 to current value for all workspaces
+			- `Shift+0` : set all gaps 0
+			- `Esc` : exit gaps editor
+		- `I` : inner gaps
+			- `+` : +5 to current value of the current workspace
+			- `-` : -5 to current value of the current workspace
+			- `0` : set gaps 0
+			- `Shift++` : +5 to current value for all workspaces
+			- `Shift+-` : -5 to current value for all workspaces
+			- `Shift+0` : set all gaps 0
+			- `Esc` : exit gaps editor
+	- `Mod+Shift+T` : launch terminal
+	- `Mod+Shift+Q` : close current app
+	- `Mod+M` : launch/exit eww
+
 # ToDo List
 
 - [ ] Add startpage
