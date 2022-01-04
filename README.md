@@ -26,7 +26,7 @@
 `---------------------------------------------------------------------------------'
 ```
 
-## Table of contents
+## Table of contents :
 * [General info](#general-info)
 * [Screenshots](#screenshots)
 * [Installation](#installation)
@@ -71,7 +71,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 ![powermenu](screenshots/powermenu.png)
 *rofi powermenu*
 
-# Installation
+# Steps for the Installation
 
 1. **Utils list:**
     - WM : [i3-gaps](https://github.com/Airblader/i3)
