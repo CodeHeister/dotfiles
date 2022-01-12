@@ -1,0 +1,176 @@
+window.thunar .sidebar {
+	background-color: #282c34;
+	padding: 1rem;
+}
+
+window.thunar treeview {
+	padding: 3px;
+}
+
+window.thunar .frame {
+	border: 0px;
+}
+
+window.thunar toolbar box {
+	padding: 5px;
+}
+
+window.thunar *{
+	background : #282c34; 
+	color : #abb2bf;
+}
+
+window.thunar entry {
+	border-color : #4b5263;
+}
+
+window.thunar menubar{
+border-radius : 0 0 5px 5px;
+}
+
+window.thunar menubar, 
+window.thunar menubar menuitem,
+window.thunar menubar menuitem label,
+window.thunar menubar menuitem image{
+	background : #4b5263;
+}
+
+/*window.thunar toolbar button{
+	border-radius : 5px;
+}*/
+
+window.thunar toolbar button:hover{
+	border-color : #4b5263;
+	outline-color : #4b5263;
+	box-shadow : 0 1px #4b5263 inset, 1px 1px 0px 0px #4b5263;
+}
+
+window.thunar separator {	
+	background : #282c34;
+}
+
+window.thunar scrollbar{
+	background : #282c34;
+	border-color : #4b5263;
+}
+
+window.thunar scrollbar slider {
+	border-color : #4b5263;
+}
+
+window.thunar scrollbar slider:hover{
+	background : #282c34;
+}
+
+window.thunar scrollbar *{
+	border-color : #282c34;
+}
+
+window.thunar grid, 
+window.thunar statusbar *, 
+window.thunar .sidebar *, 
+window.thunar .sidebar{
+	background : #4b5263;
+}
+
+window.thunar .sidebar {
+	border-radius : 0 5px 0 0;
+}
+
+window.thunar menubar {
+	border-radius : 0 0 5px 5px;
+}
+
+window.thunar menubar menuitem separator {
+	background : #282c34;
+}
+
+window.thunar menubar menuitem separator{
+	box-shadow : 0 0 7px 0 #282c34 inset, 0 0 5px 0 #4b5263 inset;
+}
+
+window.thunar menubar menuitem arrow {
+	border-radius : 100%;
+}
+
+window.thunar menubar menu,
+window.thunar entry frame {
+	padding : 1px;
+	border-color : #282c34;
+}
+
+window.thunar entry frame border {
+	border-radius : 5px;
+	border-color : #4b5263;
+}
+
+window.thunar menubar menuitem menuitem:hover,
+window.thunar menubar menuitem menuitem:hover *{
+	background : #282c34; 
+}
+
+window.thunar menubar menuitem menuitem:hover arrow {
+	background : #4b5263; 
+}
+
+
+window.thunar menubar menu,
+window.thunar entry frame {
+	padding : 1px;
+	border-color : #282c34;
+}
+
+window.thunar entry frame border {
+	border-radius : 5px;
+	border-color : #4b5263;
+}
+
+window.thunar menubar menuitem menuitem:hover,
+window.thunar menubar menuitem menuitem:hover *{
+	background : #282c34; 
+}
+
+window.thunar menubar menuitem menuitem:hover arrow {
+	background : #4b5263; 
+}
+
+window.thunar toolbar toolbutton:nth-child(1) *{
+	border-radius : 5px 0 0 5px;
+}
+
+window.thunar toolbar toolbutton:nth-last-child(2) *{
+	border-radius : 0 5px 5px 0;
+margin : 0 2px 0 0;
+}
+
+window.thunar toolbar toolitem box{
+	border-radius: 5px 0 0 5px;
+}
+
+window.thunar toolbar toolbutton button{
+	margin:0;
+}
+
+window.thunar toolbar toolbutton *{
+	border-radius : 0;
+}
+
+window.thunar toolbar{
+ padding : 0 0 0 3px;
+background : #4b5263;
+}
+
+window.thunar paned separator {
+	margin-right : -9px;
+}
+
+window.thunar overshoot.top,
+window.thunar overshoot.right,
+window.thunar overshoot.bottom,
+window.thunar overshoot.left,
+window.thunar undershoot.top,
+window.thunar undershoot.right,
+window.thunar undershoot.bottom,
+window.thunar undershoot.left{
+  background: none;
+}
