@@ -160,8 +160,20 @@ window.thunar toolbar{
 background : #4b5263;
 }
 
+window.thunar statusbar {
+	border-radius : 5px 0 0 5px;
+}
+
+window.thunar notebook widget { 	
+	border-radius : 0 0 0 5px;
+}
+
+window.thunar notebook scrolledwindow{
+background : #4b5263;
+}
+
 window.thunar paned separator {
-	margin-right : -9px;
+margin-left : -11px;
 }
 
 window.thunar overshoot.top,
