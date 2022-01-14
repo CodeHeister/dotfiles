@@ -64,9 +64,17 @@
 		;;  profile 
 		(defwidget user [] 
 			(box :class "genwin" :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
-				(box :class "face" :halign "center" :style "background-image: url('${IMAGE});")
+				(box :class "face" :halign "center" :style "background-image: url('${IMAGE}');")
 				(label :class "fullname" :halign "center" :wrap "true" :limit-width 25 :text NAME)
 				(label :class "username" :halign "center" :wrap "true" :limit-width 25 :text UNAME)))
+
+		;; NeoProfile
+		(defwidget nuser []
+			(box :class "genwin" :space-evenly "false" :vexpand "false" :hexpand "false"
+				(box :class "avatar" :vexpand "false" :hexpand "false" :style "background-image: url('${IMAGE}');"
+					(box :class "profile_main" :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+						(label :class "fullname" :halign "center" :wrap "true" :limit-width 25 :text NAME)
+						(label :class "username" :halign "center" :wrap "true" :limit-width 25 :text UNAME)))))
 
 		;;  system 
 		(defwidget system [] 
@@ -116,6 +124,18 @@
 						(button :class "btn_next" :onclick "~/.config/eww/scripts/music_info --next" "怜"))
 					(box :class "music_bar" :halign "center" :vexpand "false" :hexpand "false" 
 						(scale :onscroll "mpc -q seek +1" :min 0 :active "true" :max 100 :value CURRENT)))))
+
+		;;  Spotify
+		(defwidget spotify []
+			(box :class "genwin" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+				(box :class "art" :vexpand "false" :hexpand "false" :style "background-image: url('${COVER}');"
+					(box :class "music_main" :orientation "v" :spacing 15 :space-evenly "false" :vexpand "false" :hexpand "false"
+						(label :halign "start" :class "song" :wrap "false" :limit-width 15 :text SONG)
+						(label :halign "start" :class "artist" :wrap "false" :limit-width 15 :text ARTIST)
+						(box :orientation "h" :class "control" :spacing 20 :halign "start" :valign "end" :space-evenly "true" :vexpand "false" :hexpand "false"
+							(button :class "btn_prev" :onclick "~/.config/eww/scripts/music_info --prev" "玲")
+							(button :class "btn_play" :onclick "~/.config/eww/scripts/music_info --toggle" STATUS)
+							(button :class "btn_next" :onclick "~/.config/eww/scripts/music_info --next" "怜"))))))
 
 		;;  github 
 		(defwidget github [] 
@@ -229,7 +249,7 @@
 		;;  profile 
 		(defwindow profile :stacking "fg" :focusable "false" :screen 1 
 			    :geometry (geometry :x 109 :y 109 :width 246 :height 326)
-			     				(user))
+			     				(nuser))
 
 		;;  system 
 		(defwindow system :stacking "fg" :focusable "false" :screen 1 
@@ -249,7 +269,7 @@
 		;;  music 
 		(defwindow music :stacking "fg" :focusable "false" :screen 1 
 			    :geometry (geometry :x 365 :y 333 :width 416 :height 224)
-			     				(music))
+			     				(spotify))
 
 		;;  github 
 		(defwindow github :stacking "fg" :focusable "false" :screen 1 

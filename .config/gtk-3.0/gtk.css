@@ -15,7 +15,8 @@ window.thunar toolbar box {
 	padding: 5px;
 }
 
-window.thunar *{
+window.thunar *,
+.popup {
 	background : #282c34; 
 	color : #abb2bf;
 }
@@ -28,10 +29,14 @@ window.thunar menubar{
 border-radius : 0 0 5px 5px;
 }
 
+.popup,
+.popup menubar, 
+.popup menuitem,
+.popup menuitem label,
+.popup image,
 window.thunar menubar, 
 window.thunar menubar menuitem,
-window.thunar menubar menuitem label,
-window.thunar menubar menuitem image{
+window.thunar menubar menuitem label{
 	background : #4b5263;
 }
 
@@ -81,15 +86,13 @@ window.thunar menubar {
 	border-radius : 0 0 5px 5px;
 }
 
-window.thunar menubar menuitem separator {
-	background : #282c34;
-}
-
-window.thunar menubar menuitem separator{
+window.thunar menubar menuitem separator,
+.popup separator {
 	box-shadow : 0 0 7px 0 #282c34 inset, 0 0 5px 0 #4b5263 inset;
 }
 
-window.thunar menubar menuitem arrow {
+window.thunar menubar menuitem arrow,
+.popup arrow {
 	border-radius : 100%;
 }
 
@@ -99,23 +102,18 @@ window.thunar entry frame {
 	border-color : #282c34;
 }
 
+.popup menu {
+padding : 0;
+}
+
 window.thunar entry frame border {
 	border-radius : 5px;
 	border-color : #4b5263;
 }
 
-window.thunar menubar menuitem menuitem:hover,
-window.thunar menubar menuitem menuitem:hover *{
-	background : #282c34; 
-}
-
-window.thunar menubar menuitem menuitem:hover arrow {
-	background : #4b5263; 
-}
-
-
 window.thunar menubar menu,
-window.thunar entry frame {
+window.thunar entry frame, 
+.popup menu{
 	padding : 1px;
 	border-color : #282c34;
 }
@@ -125,13 +123,19 @@ window.thunar entry frame border {
 	border-color : #4b5263;
 }
 
-window.thunar menubar menuitem menuitem:hover,
-window.thunar menubar menuitem menuitem:hover *{
+.popup menuitem:hover,
+.popup menuitem:hover > label,
+.popup menuitem:hover > image {
 	background : #282c34; 
+	color : #abb2bf;
 }
 
-window.thunar menubar menuitem menuitem:hover arrow {
-	background : #4b5263; 
+window.thunar menubar arrow {
+	background : #4b5263;
+}
+
+.popup menuitem:hover arrow {
+	background : #282c34; 
 }
 
 window.thunar toolbar toolbutton:nth-child(1) *{

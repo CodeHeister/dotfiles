@@ -378,4 +378,74 @@
 	color: #88C0D0;
 }
 
+/*--|> NeoMusic <|--*/
+
+.art {
+	background-size : cover;
+	background-position : 100% 50%;
+	border-radius: 16px;
+}
+
+.music_main, .art {
+	min-width: 396px;
+	border-radius: 16px;
+}
+
+.music_main .song {
+	font-size : 24px;
+}
+
+.music_main .artist {
+	margin :  0 0 32px 0;
+	font-size : 16px;
+}
+
+.music_main .artist {
+	color : #E5C07b;
+}
+
+.music_main .song {
+	color : #61AFEF;
+}
+
+.music_main .btn_next, .music_main .btn_prev {
+	font-size : 30px;
+	color : #E5C07b;
+}
+
+.music_main .btn_play {
+	font-size : 40px;
+	color : #98c379;
+}
+
+.music_main .control, .music_main .song, .music_main .artist {
+	padding : 4px 0 4px 10px;
+	letter-spacing: 2px;
+}
+
+.music_main {
+	background : linear-gradient(120deg, #2E3440 /*#282c34*/ 55%, transparent);
+	padding : 4px 10px 4px 10px;
+}
+															
+/*--> NeoProfile <--*/
+
+.avatar, .profile_main {
+	border-radius : 16px;
+}
+
+.avatar {
+	background-size : cover;
+	background-position : 50% 100%;
+}
+
+.profile_main {
+	background : linear-gradient(0deg, #2E3440 25%, transparent);
+	min-width : 246px;
+}
+
+.fullname {
+	margin : 240px 0 0 0;
+}
+
 /** EOF *************************************************/
