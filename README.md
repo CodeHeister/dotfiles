@@ -95,6 +95,10 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
     - Wallpapers : [lambda wallpapers](https://github.com/pagankeymaster/lambda-wallpapers), [Aenami](https://www.reddit.com/user/Aenami/)
 	- Document viewer : [zathura](https://github.com/pwmt/zathura) ([Dracula theme](https://github.com/dracula/zathura))
 	- Terminal decoration : [pipes.sh](https://github.com/pipeseroni/pipes.sh), [cmatrix](https://github.com/abishekvashok/cmatrix), [cbonsai](https://gitlab.com/jallbrit/cbonsai) 
+	- Coming soon :
+		- Markdown Editor and Graph Visualisation : [obsidian](https://obsidian.md)
+		- GUI Text Editor : [xed](https://github.com/linuxmint/xed)
+		- Type Test : [tt](https://github.com/lemnos/tt)
 
 	Everything is described for Arch Linux.
 	- AUR :
@@ -140,7 +144,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 - This hotkeys are in `.config/i3/config` :
 	- `Mod+[0-9]` : go to workspace
 	- `Mod+Shift+[0-9]` : move active window to workspace
-	- `Alt+Ctrl+[Left-Right]` : move to the left/right workspace
+	- `Alt+Ctrl+[A/D]` : move to the left/right workspace
 	- `Mod+Tab` : swap between current and last used workspace
 	- `Mod+Shift+C` : reload i3 config file
 	- `Mod+[Left/Right/Up/Down]` : change focus
@@ -195,6 +199,8 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 # ToDo List
 
+- [x] Onedark Thunar
+- [ ] Change eww widgets
 - [ ] Add startpage
 - [ ] Add colorscheme toggle
 
