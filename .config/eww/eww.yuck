@@ -21,8 +21,10 @@
         ;;  Time vars 
 		(defpoll HOUR :interval "5s"  "date +\"%I\"")
 		(defpoll MIN :interval "5s"  "date +\"%M\"")
-		(defpoll MER :interval "5s"  "date +\"%p\"")
+		(defpoll MERA :interval "5s"  "date +\"%p\" | cut -b 1")
+		(defpoll MERB :interval "5s"  "date +\"%p\" | cut -b 2")
 		(defpoll DAY :interval "5s"  "date +\"%A\"")
+		(defpoll DATE :interval "5s"  "date +\"%d.%m.%Y\"")
 
         ;;  Uptime vars 
 		(defpoll UPHOUR :interval "5s"  "uptime -p | awk '{print $2 \" \" $3}' | sed 's/,//g'")
@@ -99,9 +101,21 @@
 				(label :class "time_hour" :valign "start" :wrap "true" :limit-width 25 :text HOUR)
 				(label :class "time_min" :valign "end" :wrap "true" :limit-width 25 :text MIN)
 				(box :orientation "v" :spacing 10 :space-evenly "false" :vexpand "false" :hexpand "false" 
-					(label :class "time_mer" :halign "end" :wrap "true" :limit-width 25 :text MER)
+					(label :class "time_mer" :halign "end" :wrap "true" :limit-width 25 :text "${MERA}${MERB}")
 					(label :class "time_day" :halign "end" :wrap "true" :limit-width 25 :text DAY))))
-
+		
+		;; NeoClock
+		(defwidget nclock []
+			(box :class "genwin" :orientation "v" :spacing 0 :space-evenly "false" :vexpand "false" :hexpand "false"
+				(label :class "ntime_date" :halign "center" :wrap "true" :limit-width 25 :text DATE)
+				(box :orientation "h" :halign "center" :spacing 8 :space-evenly "false" :vexpand "false" :hexpand "false" 
+					(label :class "ntime_hour" :valign "start" :wrap "true" :limit-width 25 :text HOUR)
+					(box :orientation "v" :class "ntime_mers" :spacing 0 :space-evenly "false" :vexpand "false" :hexpand "false" 
+						(label :class "ntime_mer" :halign "end" :wrap "true" :limit-width 25 :text MERA)
+						(label :class "ntime_mer" :halign "end" :wrap "true" :limit-width 25 :text MERB))
+					(label :class "ntime_min" :valign "end" :wrap "true" :limit-width 25 :text MIN))
+				(label :class "ntime_day" :halign "center" :wrap "true" :limit-width 25 :text DAY)))
+		
 		;;  uptime 
 		(defwidget uptime [] 
 			(box :class "genwin" 
@@ -187,10 +201,10 @@
 								(box :class "appbox" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
 					(button :style "background-image: url('images/icons/terminal.svg');" :class "app_terminal" :onclick "~/.config/eww/scripts/open_apps --tr")
 					(button :style "background-image: url('images/icons/files.svg');" :class "app_files" :onclick "~/.config/eww/scripts/open_apps --fm")
-					(button :style "background-image: url('images/icons/geany.svg');" :class "app_geany" :onclick "~/.config/eww/scripts/open_apps --ge"))
+					(button :style "background-image: url('images/icons/neovim.svg');" :class "app_neovim" :onclick "~/.config/eww/scripts/open_apps --nv"))
 								(box :class "appbox" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
 					(button :style "background-image: url('images/icons/code.svg');" :class "app_code" :onclick "~/.config/eww/scripts/open_apps --cd")
-					(button :style "background-image: url('images/icons/gimp.svg');" :class "app_gimp" :onclick "~/.config/eww/scripts/open_apps --gp")
+					(button :style "background-image: url('images/icons/krita.svg');" :class "app_gimp" :onclick "~/.config/eww/scripts/open_apps --kr")
 					(button :style "background-image: url('images/icons/virtualbox.svg');" :class "app_vbox" :onclick "~/.config/eww/scripts/open_apps --vb"))))
 
 		;;  power buttons 
@@ -259,7 +273,7 @@
 		;;  clock 
 		(defwindow clock :stacking "fg" :focusable "false" :screen 1 
 			    :geometry (geometry :x 365 :y 109 :width 206 :height 102)
-			     				(clock))
+			     				(nclock))
 
 		;;  uptime 
 		(defwindow uptime :stacking "fg" :focusable "false" :screen 1 
