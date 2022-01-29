@@ -18,5 +18,5 @@
     selected-fg: #abb2bf;
     win-bg : #282c34cc;
     highlight-bg: #4F576999;
-    urgent:	    #dc322f55;
+    urgent:	    #E06C7555;
 }
