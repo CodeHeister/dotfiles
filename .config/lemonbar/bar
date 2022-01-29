@@ -41,7 +41,18 @@ red="#dc322f"
 yellow="#b58900"
 ws_bg="#554b5263"
 ws_urgent="#aadc322f"
-ws_color=("#52E080" "#D70040" "#117dca" "#32a7d9" "#23cf5f" "#80461b" "#f4c430" "#DA70D6" "#800020" "#F5F5F5")
+ws_color=(
+	"#52E080" 
+	"#D70040" 
+	"#117dca" 
+	"#32a7d9" 
+	"#23cf5f" 
+	"#80461b" 
+	"#f4c430" 
+	"#DA70D6" 
+	"#800020" 
+	"#F5F5F5"
+)
 
 #######
 # Clock
@@ -164,6 +175,11 @@ workspaces() {
 # vol_d ;; Popup volume visibility duration (in cycles)  
 
 vol_popup_delay=3   # in cycles (1 cycle = 0.25sec)
+vol_ico=(
+	"奄"
+	"奔"
+	"墳"
+)
 
 volume() {
 	local vol_info=$(amixer sget Master)
@@ -176,8 +192,17 @@ volume() {
 	else
 		t_vol="$l_vol/$r_vol"
 	fi
+	local sym=$vol_ico[2]
 	if [[ $l_state == "on" ]] && [[ $r_state == "on" ]]; then
-		local sym="墳"	
+		local len=${#vol_ico[@]}
+		local i=0
+		while [[ $i -lt $len ]]; do
+			if [[ $l_vol -le $(((100/($len-1))*$i)) ]]; then
+				local sym=${vol_ico[i]}
+				break
+			fi;
+			((i++))
+		done
 	else
 		local sym="%{F$yellow}ﱝ"
 	fi
@@ -250,7 +275,7 @@ l_ram=$(free -t | awk 'NR == 2 {printf("%.0f"), $3/$2*100}')
 ram_popup_delay=4
 ram_x=1
 a_ram=60
-w_ram=30
+w_ram=40
 
 ram_stat() {
 	ram_out=" "
