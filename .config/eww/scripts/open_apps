@@ -19,14 +19,14 @@ elif [[ "$1" == "--tr" ]]; then
 elif [[ "$1" == "--fm" ]]; then
 	${EWW} close-all && rm -rf "$FILE" && thunar ~ &
 
-elif [[ "$1" == "--ge" ]]; then
-	${EWW} close-all && rm -rf "$FILE" && geany &
+elif [[ "$1" == "--nv" ]]; then
+	${EWW} close-all && rm -rf "$FILE" && urxvt -e sh -c "nvim" &
 
 elif [[ "$1" == "--cd" ]]; then
 	${EWW} close-all && rm -rf "$FILE" && code &
 
-elif [[ "$1" == "--gp" ]]; then
-	${EWW} close-all && rm -rf "$FILE" && gimp &
+elif [[ "$1" == "--kr" ]]; then
+	${EWW} close-all && rm -rf "$FILE" && krita &
 
 elif [[ "$1" == "--vb" ]]; then
 	${EWW} close-all && rm -rf "$FILE" && virtualbox &

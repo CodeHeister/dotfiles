@@ -223,7 +223,7 @@
 }
 
 .app_vivaldi, .app_telegram, .app_discord, .app_terminal,
-.app_files, .app_geany, .app_code, .app_gimp, .app_vbox {
+.app_files, .app_neovim, .app_code, .app_gimp, .app_vbox {
     background-repeat: no-repeat;
 	background-size: 54px;
 	min-height: 54px;
@@ -236,7 +236,10 @@
 .app_discord {}
 .app_terminal {}
 .app_files {}
-.app_geany {}
+.app_neovim { 
+	background-size : 48px;
+	background-position : center;
+}
 .app_code {}
 .app_gimp {}
 .app_vbox {}
@@ -446,6 +449,44 @@
 
 .fullname {
 	margin : 240px 0 0 0;
+}
+
+/*--|> NeoClock <|--*/
+
+.ntime_hour, .ntime_min {
+	color: #81A1C1;
+	font-size : 45px;
+	font-weight : bold;
+}
+.ntime_hour {
+	margin : 0px;
+}
+.ntime_min {
+	margin : 0px 0px 0px 2px;
+}
+
+.ntime_date {
+	margin : 6px 0px -6px 0px;
+	color : #61AFEF;
+	font-size : 17px;
+	font-weight : bold;
+}
+
+.ntime_mers *:nth-child(1) {
+	margin : 8px 0px 0px 0px;
+}
+
+.ntime_mer {
+	color: #A3BE8C;
+	font-size : 16px;
+	font-weight : bold;
+}
+
+.ntime_day {
+	margin : -8px 0px 0px 0px;
+	color: #EBCB8B;
+	font-size : 18px;
+	font-weight : normal;
 }
 
 /** EOF *************************************************/
