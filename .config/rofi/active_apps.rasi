@@ -8,9 +8,8 @@ configuration {
     show-icons: true;
     font: "Iosevka 10";
     icon-theme: "Papirus";
-    window-format: "{c}";
     display-window: "";
-    window-display-format: "{name}";
+	window-format: "{c}";
 }
 
 @import "colors.rasi"
@@ -24,7 +23,7 @@ window {
 
     background-color: @win-bg;
     width:50%;
-    height:80%;
+    height:25%;
 }
 
 mainbox {
@@ -62,11 +61,11 @@ prompt {
 
 listview {
     spacing : 0.5%;
-    margin : 3.75% 0.75% 2% 0.75%;
+    margin : 1.75% 0.75% 1.75% 0.75%;
     padding : 0.1%;
     orientation: horizontal;
-    columns: 2;
-    lines: 10;
+	columns: 5;
+	lines : 1;
     layout: vertical;
     background-color: transparent;
 }
@@ -74,8 +73,10 @@ listview {
 element {
     padding: 2.25% 0.75% 2.25% 0.75%;
     border-radius: 5px;
-    width: 50px;
+    width: 10px;
     margin: 0.5%;
+	orientation: vertical;
+	spacing: 1%;
 }
 
 element-icon {
