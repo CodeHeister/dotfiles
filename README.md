@@ -99,6 +99,9 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 		- Markdown Editor and Graph Visualisation : [obsidian](https://obsidian.md)
 		- GUI Text Editor : [xed](https://github.com/linuxmint/xed)
 		- Type Test : [tt](https://github.com/lemnos/tt)
+		- Terminal emulator : kitty
+		- Icons : Candy Icons
+		- Cursor : Breeze
 
 	Everything is described for Arch Linux.
 	- AUR :
@@ -118,7 +121,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 		- rofi
 		- urxvt
 		- thunar
-		- ranger (w3m)
+		- ranger (ueberzug)
 		- zathura
 		- dunst
 
@@ -169,7 +172,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- `Ctrl+Print` : area or app screenshot (saves to ~/Pictures/Screenshots)
 	- `Ctrl+Shift+Print` : flameshot (interactive screen software with utils)
 	- `Mod+F3` : app searcher
-	- `Mod+Shift+F3` : active apps searcher 
+	- `Alt+Tab` : active apps searcher 
 	- `Mod+Shift+E` : powermenu
 	- `Mod+F9` : mute/unmute
 	- `Mod+F10` : volume down
@@ -191,18 +194,19 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 			- `Shift+-` : -5 to current value for all workspaces
 			- `Shift+0` : set all gaps 0
 			- `Esc` : exit gaps editor
-	- `Mod+Shift+T` : launch terminal
+	- `Mod+Shift+T` or `Mod+Enter` : launch terminal
 	- `Mod+Shift+Q` : close current app
 	- `Mod+M` : launch/exit eww
 - This hotkeys are in `.xinitrc` :
 	- `Alt+Tab` : change keyboard layout (disabled) uncomment `setxkbmap` and add your layouts)
+	- `Mod+DragMouseLeftButton` : drag floating windows
+	- `Mod+DragMouseRightButton` : resize non-floating windows and gaps between them
 
 # ToDo List
 
 - [x] Onedark Thunar
 - [ ] Change eww widgets
 - [ ] Add startpage
-- [ ] Add colorscheme toggle
 
 # Afterwords
 
