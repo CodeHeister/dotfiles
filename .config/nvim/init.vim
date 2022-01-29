@@ -40,6 +40,9 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+let g:mkdp_port = '8020'
+let g:mkdp_filetypes = ['markdown']
+
 call plug#begin()
 
 Plug 'https://github.com/vim-airline/vim-airline'
@@ -55,6 +58,8 @@ Plug 'https://github.com/terryma/vim-multiple-cursors'
 Plug 'https://github.com/preservim/tagbar' 
 Plug 'https://github.com/neoclide/coc.nvim'
 Plug 'https://github.com/joshdick/onedark.vim'
+Plug 'https://github.com/preservim/vim-markdown' 
+Plug 'https://github.com/iamcco/markdown-preview.nvim'
 
 set encoding=UTF-8
 
@@ -68,4 +73,4 @@ colorscheme onedark
 set termguicolors
 
 " nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
+" nnoremap <C-n> :NERDTreeToggle<CR>
