@@ -1,0 +1,143 @@
+:root {
+    --bg-primary : #2E3440;
+    --bg-secondary : #282C34;
+    --font-primary: #ABB2BF;
+}
+
+* {
+    font-family: Iosevka;
+    color: var(--font-primary)
+}
+
+body, html {
+    margin:0;
+    padding:0;
+    line-height: 1.5em;
+    height: 100%;
+    width: 100%;
+}
+
+.bg {
+    width:100%;
+    height: 100%;
+    background-image: url(../img/ign-0001.png);
+    background-repeat: no-repeat;
+    background-size: 110%;
+    background-position: 50% 50%;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+}
+
+.page-holder {
+    width: 100%;
+    height: 30%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.page {
+    background-color: var(--bg-secondary);
+    margin: 10%;
+    transition: 0.1s ease-out;
+    border-radius: 16px;
+    transition: filter 0.2s ease-in, transform 0.1s ease, background-color 0.2s ease-out;
+    filter: grayscale(.4);
+    min-height: 6.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.page svg path {
+    transition: fill 0.2s ease-out;
+}
+
+.page:hover {
+    filter: grayscale(0);
+}
+
+form {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    padding: 5% 0 5% 0;
+    justify-content: center;
+    align-content: center;
+}
+
+.form-holder {
+    display: flex;
+    background-color: var(--bg-secondary);
+    width: 35%;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 100px;
+    padding: 0 2% 0 2%;
+}
+
+form img {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+form input[type="text"] {
+    background-color: var(--bg-secondary);
+    outline: 0;
+    border: 0;
+    width: 70%;
+    margin: 0 2.5% 0 2.5%;
+    height: 50%;
+    border-radius: 16px;
+    font-size: 1rem;
+}
+
+form input[type="text"]::placeholder { 
+    font-size: 1rem;
+}
+
+form input[type="submit"] {
+    width: 1.75rem;
+    height: 1.75rem;
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    background-color: var(--bg-secondary);
+    background-image: url(../img/search.svg);
+    background-size: cover;
+    background-position: center;
+}
+
+form input[type="submit"]:hover,
+form img:hover {
+    transform: scale(1.1);
+}
+
+.reddit {
+    background-color: #ff4500 !important;
+    background-image: url(../img/reddit.svg);
+    background-size: 35%;
+}
+
+.github {
+    background-color: #25292f !important;
+    background-image: url(../img/github.svg);
+    background-size: 35%;
+}
+
+.youtube {
+    background-color: #f60000 !important;
+    background-image: url(../img/youtube_black.svg);
+    background-size: 60%;
+}
+
+.twitch {
+    background-color: #974df7 !important;
+    background-image: url(../img/twitch.svg);
+    background-size: 30%;
+}
+
+.arch {
+    background-color: #1793D1 !important;
+    background-image: url(../img/arch.svg);
+    background-size: 35%;
+}
