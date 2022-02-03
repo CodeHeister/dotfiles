@@ -54,7 +54,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 \
 \
 ![urxvt](screenshots/terminal.png)
-*terminal emulator*\
+*terminal emulator and type test*\
 \
 \
 \
@@ -63,8 +63,13 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 \
 \
 \
+![eww](screenshots/obsidian.png)
+*obsidian markdown vaults*\
+\
+\
+\
 ![file managers](screenshots/file_managers.png)
-*ranger and thunar*\
+*xed, foliate and thunar*\
 \
 \
 \
