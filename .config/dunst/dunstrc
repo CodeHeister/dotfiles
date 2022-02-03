@@ -19,14 +19,14 @@
     separator_height = 2
     padding = 8
     horizontal_padding = 8
-    separator_color = "#585858aa"
+    separator_color = "#58585822"
     startup_notification = false
     corner_radius = 6
     # https://github.com/knopwob/dunst/issues/26#issuecomment-36159395
     #icon_position = left
     #icon_folders = /usr/share/icons/elementary/actions/16/
     frame_width = 1
-    frame_color = "#abb2bf22"
+    frame_color = "#abb2bf66"
 
 [shortcuts]
     close = ctrl+space
