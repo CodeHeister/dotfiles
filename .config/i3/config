@@ -27,7 +27,7 @@ set $eww $HOME/.config/eww
 set $wallpaper $HOME/.config/wallpaper
 set $dunst $HOME/.config/dunst
 set $picom $HOME/.config/picom
-set $lemonbar "~/.config/lemonbar/bar | lemonbar -p -n 'Lemonbar' -a 21 -f 'Iosevka Medium:pixelsize=14' -f 'Hack Nerd Font:pixelsize=15' | while read line; do eval '${line}'; done && notify-send -u low 'Lemonbar' 'Your statusbar was stopped' || notify-send -u low 'Lemonbar' 'Something went wrong'"
+set $lemonbar "~/.config/lemonbar/bar | lemonbar -p -n 'Lemonbar' -a 23 -f 'Iosevka Medium:pixelsize=14' -f 'Hack Nerd Font:pixelsize=15' | while read line; do eval '${line}'; done && notify-send -u low 'Lemonbar' 'Your statusbar was stopped' || notify-send -u low 'Lemonbar' 'Something went wrong'"
 
 # Use super/alt/control key
 set $mod Mod4
@@ -346,7 +346,8 @@ for_window [class="discord"] move to workspace $ws8, focus
 # Workspace 9 [games]
 for_window [class="Steam|steam_proton*|steam_app*|Zenity|Lutris"] move to workspace $ws9, focus
 
-for_window [title="Steam*|Rockstar Games Launcher|osu!"] move to workspace $ws9, focus
+for_window [title="Steam*|Rockstar Games Launcher"] move to workspace $ws9, focus
+for_window [class="osu!.exe"] move to workspace $ws9, focus
 for_window [title="Steam Library Folders|Create or select new Steam library folder:*|Criar/Selecionar nova pasta de biblioteca Steam:*|Pastas de biblioteca Steam*"] move to workspace $ws9, floating enable, focus
 
 ###############
