@@ -1,0 +1,163 @@
+/*
+ * ROFI Powermenu template
+ * Author: @BaptisteBdn
+ */
+
+configuration {
+    modi: "window";
+    show-icons: true;
+    font: "Iosevka 10";
+    icon-theme: "Papirus";
+    display-window: "";
+	window-format: "{c}";
+}
+
+@import "colors.rasi"
+
+* {
+
+}
+
+window {
+    transparency: "real";
+
+    background-color: @win-bg;
+    width:50%;
+    height:25%;
+}
+
+mainbox {
+    margin : 15px 10px 0 10px;
+    border:  0;
+    padding: 0;
+    background-color: @bg;
+    children: [inputbar, listview];
+    background-color: transparent;
+    spacing: 0.5%;
+}
+
+inputbar {
+    border-radius-bottom-left: 10px;
+    border-radius: 10px;
+    background-color: @bg;
+    children: [prompt, entry];
+    spacing:0;
+    margin: 0px;
+}
+
+entry {
+    background-color: @selected-bg;
+    padding: 10px;
+    placeholder: "Search...";
+    placeholder-color: @fg;
+    text-color: @fg;
+}
+
+prompt {
+  padding: 10px;
+  background-color: @selected-bg;
+  text-color: @fg;
+}
+
+listview {
+    spacing : 0.5%;
+    margin : 1.75% 0.75% 1.75% 0.75%;
+    padding : 0.1%;
+    orientation: horizontal;
+	columns: 5;
+	lines : 1;
+    layout: vertical;
+    background-color: transparent;
+}
+
+element {
+    padding: 2.25% 0.75% 2.25% 0.75%;
+    border-radius: 5px;
+    width: 10px;
+    margin: 0.5%;
+	orientation: vertical;
+	spacing: 1%;
+}
+
+element-icon {
+    size: 36px;
+    margin: 1px;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    background-color: transparent;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+/* --NORMAL-- */
+
+element normal.normal {
+    background-color: rgba(0, 0, 0, 0);
+    text-color:       @fg;
+}
+
+element selected.normal {
+    background-color: @selected-bg;
+    text-color:       @selected-fg;
+    border-color: #d07ef2;
+}
+
+element alternate.normal {
+    background-color: rgba(0,0,0,0);
+    text-color:       @fg;
+}
+
+
+/* --ACTIVE-- */
+
+element normal.active {
+    background-color: @highlight-bg;
+}
+
+element selected.active {
+   background-color: @selected-bg;
+   text-color: @selected-fg;
+}
+
+element alternate.active {
+    background-color: rgba(0,0,0,0);
+    text-color:       @fg;
+}
+
+
+/* --URGENT-- */
+
+element normal.urgent {
+    background-color: @urgent;
+    text-color:       @fg;
+}
+
+element selected.urgent {
+   background-color: @urgent;
+    text-color:       @selected-bg;
+}
+
+element alternate.urgent {
+    background-color: @urgent;
+    text-color:       @selected-bg;
+}
+
+mode-switcher {
+    border:       0px 0px 0px ;
+    border-color: @separatorcolor;
+}
+
+button {
+    spacing:    0;
+    text-color: @fg;
+}
+
+button.selected {
+    background-color: @selected-bg;
+    text-color:       @selected-fg;
+}

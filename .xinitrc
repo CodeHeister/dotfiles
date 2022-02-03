@@ -50,6 +50,7 @@ fi
 
 twm &
 
+xss-lock -- i3lock -n -c 000000
 xsetroot -cursor_name Breeze
-setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle
+# setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle
 exec i3
