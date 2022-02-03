@@ -81,10 +81,11 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 1. **Utils list :**
     - WM : [i3-gaps](https://github.com/Airblader/i3)
     - Fonts : [Iosevka](https://typeof.net/Iosevka/), [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
-    - Icons : [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
+    - Icons : [Candy Icons](https://github.com/EliverLara/candy-icons), [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
     - Music player : [cmus](https://github.com/cmus/cmus) ([some themes](https://github.com/averms/base16-cmus))
     - Audio visualizer : [cava](https://github.com/karlstav/cava)
 	- Notification daemon : [dunst](https://github.com/dunst-project/dunst)
+	- Cursor : Breeze
 	- Terminal emulator : urxvt
 	- File manager : 
 		- GUI : thunar
@@ -94,19 +95,18 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
         - 1920x1080 : [adi1090x's widgets](https://github.com/adi1090x/widgets)
         - 1360x768 : [edited widgets](.config/eww) with Spotify
     - Statusbar : [lemonbar-xft](https://github.com/drscream/lemonbar-xft)
-    - Text editor : [neovim](https://github.com/neovim/neovim) ([Plugin manager](https://github.com/junegunn/vim-plug)), ([Navarasu's onedark](https://github.com/navarasu/onedark.nvim), [Joshdick's onedark](https://github.com/joshdick/onedark.vim), [Crusoexia's monokai](https://github.com/crusoexia/vim-monokai))
-    - Compositor : [Ibhagwan's picom](https://github.com/ibhagwan/picom-ibhagwan-git)
+    - Text editor : 
+		- Terminal : [neovim](https://github.com/neovim/neovim) ([Plugin manager](https://github.com/junegunn/vim-plug)), ([Navarasu's onedark](https://github.com/navarasu/onedark.nvim), [Joshdick's onedark](https://github.com/joshdick/onedark.vim), [Crusoexia's monokai](https://github.com/crusoexia/vim-monokai))
+		- GUI : [xed](https://github.com/linuxmint/xed)
+	- Compositor : [Ibhagwan's picom](https://github.com/ibhagwan/picom-ibhagwan-git)
     - App launcher : [rofi](https://github.com/davatorium/rofi)
     - Wallpapers : [lambda wallpapers](https://github.com/pagankeymaster/lambda-wallpapers), [Aenami](https://www.reddit.com/user/Aenami/)
 	- Document viewer : [zathura](https://github.com/pwmt/zathura) ([Dracula theme](https://github.com/dracula/zathura))
+	- Type Test : [tt](https://github.com/lemnos/tt)
 	- Terminal decoration : [pipes.sh](https://github.com/pipeseroni/pipes.sh), [cmatrix](https://github.com/abishekvashok/cmatrix), [cbonsai](https://gitlab.com/jallbrit/cbonsai) 
 	- Coming soon :
 		- Markdown Editor and Graph Visualisation : [obsidian](https://obsidian.md)
-		- GUI Text Editor : [xed](https://github.com/linuxmint/xed)
-		- Type Test : [tt](https://github.com/lemnos/tt)
 		- Terminal emulator : kitty
-		- Icons : Candy Icons
-		- Cursor : Breeze
 
 	Everything is described for Arch Linux.
 	- AUR :
@@ -210,8 +210,8 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 # ToDo List
 
 - [x] Onedark Thunar
-- [ ] Change eww widgets
-- [ ] Add startpage
+- [x] Change eww widgets
+- [x] Add startpage
 
 # Afterwords
 
