@@ -48,6 +48,11 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 \
 \
 \
+![startpage](screenshots/startpage.png)
+*parallax startpage*\
+\
+\
+\
 ![urxvt](screenshots/terminal.png)
 *terminal emulator*\
 \
