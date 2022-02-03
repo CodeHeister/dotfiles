@@ -33,6 +33,7 @@ sound_toggle="amixer set Master toggle"
 
 # Arch icon action (you may change icon in main loop)
 launch_menu="$HOME/.config/eww/launch_eww"
+launch_cal="$HOME/.config/eww/launch_eww_cal"
 
 # Main colors
 fg="#abb2bf"
@@ -93,7 +94,7 @@ get_music() {
 		# music="%{A:spotify:}  %{A}"
 		music=""
 	fi
-	echo -n $music
+	echo -n "${music}"
 }
 
 ###################
@@ -314,7 +315,7 @@ while true; do
 	volume; cpu_stat; ram_stat	# Used externally to keep and change global vars like last value, iterations and etc. (Output is stored in vars, not via echo)
 
 	# Taskbar
-        echo 	"%{c}%{F$fg}%{B-} $(clock)\
+        echo 	"%{c}%{F$fg}%{B-}%{A:$launch_cal:}  $(clock) %{A}\
 		%{l}%{A:$launch_menu:}  %{A}$(workspaces)\
 		%{r}$(get_music) $cpu_out $ram_out%{A:$sound_toggle:}%{A4:$sound_up:}%{A5:$sound_down:} $vol_out %{A}%{A}%{A}%{F-}%{B-}"
 	
