@@ -1,42 +1,133 @@
 /** Global *******************************************/
 *{
-	all: unset;
-	font-family: feather;
-	font-family: Iosevka;
+	all : unset;
+	font-family : feather;
+	font-family : Iosevka;
 }
+
+/** Vars *********************************************/
+
+$bg-color : #282c34; 
 
 /** Background ***************************************/
 .bg {
-	background-image: url("images/bg.png");
-	background-color: #474D59;
-	opacity: 1;
+	background-image : url("images/bg.png");
+	background-color : #474D59;
+	background-size : 117%;
+	background-position : center;
+	background-repeat : no-repeat;
+	opacity : 1;
 }
 
 /** Generic window ***********************************/
+.genwin, .genwina, .genwinb, .genwinc, .genwind, .genwine, .genwinf, .genwing, .genwinh {
+	background-color : $bg-color; //#252933; #2E3440;
+}
+
 .genwin {
-	background-color: #2E3440;
-	border-radius: 16px;
+	border-radius : 16px;
+}
+
+.genwina {
+	border-radius : 16px 16px 0 0;
+}
+
+.genwinb {
+	border-radius : 0 16px 16px 16px;
+}
+
+.genwinh {
+	border-radius : 16px 0 0 16px;
+}
+
+.genwinc {
+	border-radius : 16px 16px 0 16px;
+}
+
+.genwind {
+	border-radius : 46px 16px 16px 16px;
+}
+
+.genwine {
+	border-radius : 16px 46px 16px 16px;
+}
+
+.genwinf {
+	border-radius : 16px 16px 16px 46px;
+}
+
+.genwing {
+	border-radius : 16px 16px 46px 16px;
+}
+
+/** rxyhn's calendar *********************************/
+.cal-holder {
+	padding : 1rem 1rem .2rem;
+	font-size : 1em;
+	font-weight : bold;
+}
+
+.cal_title_right, .cal_title_left {
+	font-size : 32px;
+	color : #EBCB8B;
+}
+
+.cal_title {
+	margin : 16px 72px 4px 72px; 
+	font-size : 16px;
+	color : #A3BE8C; 
+}
+
+.cal {
+	padding : .8rem .25rem 0rem;
+	margin-left : 10px;
+	
+	&.highlight {
+		padding : 10rem;
+	}
+}
+
+calendar:selected {
+	color : #88C0D0;
+}
+
+calendar.header {
+	color : #88C0D0;
+	font-weight : bold;
+}
+
+calendar.button {
+	color : #D46389;
+}
+
+calendar.highlight {
+	color : #D46389;
+	font-weight : bold;
+}
+
+calendar:indeterminate {
+	color : $bg-color;
 }
 
 /** Profile ******************************************/
 .face {
-	background-image: url('images/fox.png');
-	background-size: 175px;
-	background-position: 50% 35%;
-	min-height: 175px;
-	min-width: 175px;
-	margin: 40px 0px 0px 2px;
-	border-radius: 100%;
+	background-image : url('images/fox.png');
+	background-size : 175px;
+	background-position : 50% 35%;
+	min-height : 175px;
+	min-width : 175px;
+	margin : 40px 0px 0px 2px;
+	border-radius : 100%;
 }
 
 .fullname {
-	color: #D46389;
+	color : #D46389;
 	font-size : 30px;
 	font-weight : bold;
 }
 
 .username {
-	color: #8FBCBB;
+	color : #8FBCBB;
 	font-size : 22px;
 	font-weight : bold;
 	margin : -15px 0px 0px 0px;
@@ -48,47 +139,47 @@
 	font-weight : normal;
 }
 .iconcpu {
-	color: #BF616A;
+	color : #BF616A;
 }
 .iconmem {
-	color: #A3BE8C;
+	color : #A3BE8C;
 }
 .iconbright {
-	color: #EBCB8B;
+	color : #EBCB8B;
 }
 .iconbat {
-	color: #88C0D0;
+	color : #88C0D0;
 }
 
 .cpu_bar, .mem_bar, .bright_bar, .bat_bar, scale trough {
-	all: unset;
-	background-color: #3A404C;
-	border-radius: 16px;
-	min-height: 12px;
-	min-width: 170px;
+	all : unset;
+	background-color : #3A404C;
+	border-radius : 16px;
+	min-height : 12px;
+	min-width : 170px;
 }
 
 .cpu_bar, .mem_bar, .bright_bar, .bat_bar, scale trough highlight {
-	all: unset;
-	border-radius: 16px;
+	all : unset;
+	border-radius : 16px;
 }
 
 .cpu_bar scale trough highlight {
-	background-color: #BF616A;
+	background-color : #BF616A;
 }
 .mem_bar scale trough highlight {
-	background-color: #A3BE8C;
+	background-color : #A3BE8C;
 }
 .bright_bar scale trough highlight {
-	background-color: #EBCB8B;
+	background-color : #EBCB8B;
 }
 .bat_bar scale trough highlight {
-	background-color: #88C0D0;
+	background-color : #88C0D0;
 }
 
 /** Clock ********************************************/
 .time_hour, .time_min {
-	color: #81A1C1;
+	color : #81A1C1;
 	font-size : 45px;
 	font-weight : bold;
 }
@@ -100,14 +191,14 @@
 }
 
 .time_mer {
-	color: #A3BE8C;
+	color : #A3BE8C;
 	font-size : 30px;
 	font-weight : bold;
 	margin : 10px 0px 0px 0px;
 }
 
 .time_day {
-	color: #EBCB8B;
+	color : #EBCB8B;
 	font-size : 17px;
 	font-weight : normal;
 	margin : 0px 0px -30px 10px;
@@ -115,83 +206,71 @@
 
 /** Uptime ********************************************/
 .icontimer {
-	color: #B48EAD;
+	color : #B48EAD;
 	font-size : 50px;
 	font-weight : normal;
 }
 
-.uphour {
-	color: #E5E9F0;
-	font-size : 28px;
-	font-weight : bold;
-}
-
-.upmin {
-	color: #E5E9F0;
-	font-size : 22px;
-	font-weight : bold;
-}
-
 /** Music ***************************************/
 .album_art {
-	background-size: cover;	
-	background-position: center;
-	min-height: 184px;
-	min-width: 184px;
-	margin: 20px;
-	border-radius: 14px;
+	background-size : cover;	
+	background-position : center;
+	min-height : 184px;
+	min-width : 184px;
+	margin : 20px;
+	border-radius : 14px;
 }
 
 .song {
-	color: #8FBCBB;
+	color : #8FBCBB;
 	font-size : 18px;
 	font-weight : bold;
 	margin : 15px 0px 0px 0px;
 }
 
 .artist {
-	color: #EBCB8B;
+	color : #EBCB8B;
 	font-size : 14px;
 	font-weight : normal;
 	margin : 0px 0px 0px 0px;
 }
 
 .btn_prev, .btn_play, .btn_next {
-	font-family: Iosevka Nerd Font;
+	font-family : Iosevka Nerd Font;
 }
 .btn_prev {
-	color: #EBCB8B;
+	color : #EBCB8B;
 	font-size : 32px;
 	font-weight : normal;
 }
 .btn_play {
-	color: #A3BE8C;
+	color : #A3BE8C;
 	font-size : 40px;
 	font-weight : bold;
 }
 .btn_next {
-	color: #EBCB8B;
+	color : #EBCB8B;
 	font-size : 32px;
 	font-weight : normal;
 }
 
 .music_bar scale trough highlight {
-	all: unset;
-	background-color: #B48EAD;
-	border-radius: 8px;
+	all : unset;
+	background-color : #B48EAD;
+	border-radius : 8px;
 }
 .music_bar scale trough {
-	all: unset;
-	background-color: #3A404C;
-	border-radius: 8px;
-	min-height: 10px;
-	min-width: 180px;
+	all : unset;
+	background-color : #3A404C;
+	border-radius : 8px;
+	min-height : 10px;
+	min-width : 180px;
 	margin : 0px 10px 0px 0px;
 }
 
 /** Weather ***************************************/
 .iconweather {
-	font-family: Iosevka Nerd Font;
+	font-family : Iosevka Nerd Font;
 	font-size : 58px;
 	font-weight : normal;
 	margin : 10px 0px 0px 30px;
@@ -208,7 +287,7 @@
 	color : #BF616A;
 	font-size : 30px;
 	font-weight : bold;
-	margin: 0px 0px 10px 0px;
+	margin : 10px 0px 0px 0px;
 }
 
 .label_quote {
@@ -222,13 +301,13 @@
 	margin : 10px 0px 0px 12px;
 }
 
-.app_vivaldi, .app_telegram, .app_discord, .app_terminal,
-.app_files, .app_neovim, .app_code, .app_gimp, .app_vbox {
-    background-repeat: no-repeat;
-	background-size: 54px;
-	min-height: 54px;
-	min-width: 54px;
-	margin: 5px 7px 0px 7px;
+.app_vivaldi, .app_telegram, .app_discord, .app_terminal, .app_obsidian,
+.app_files, .app_neovim, .app_code, .app_krita, .app_vbox {
+    background-repeat : no-repeat;
+	background-size : 42px;
+	min-height : 42px;
+	min-width : 42px;
+	margin : 0 3px 0 3px;
 }
 
 .app_vivaldi {}
@@ -236,56 +315,58 @@
 .app_discord {}
 .app_terminal {}
 .app_files {}
+.app_obsidian {
+}
 .app_neovim { 
-	background-size : 48px;
+	background-size : 36px;
 	background-position : center;
 }
 .app_code {}
-.app_gimp {}
+.app_krita {}
 .app_vbox {}
 
 /** Links ***************************************/
 .iconweb, .iconmail {
-	color: #FFFFFF;
-	font-family: Iosevka Nerd Font;
+	color : #FFFFFF;
+	font-family : Iosevka Nerd Font;
 	font-size : 60px;
 	font-weight : normal;
 }
 .iconmail {
-	color: #DF584E;
+	color : #DF584E;
 }
 
 .github {
-	background-color: #24292E;
-	border-radius: 16px;
+	background-color : #24292E;
+	border-radius : 16px;
 }
 .reddit {
-	background-color: #E46231;
-	border-radius: 16px;
+	background-color : #E46231;
+	border-radius : 16px;
 }
 .twitter {
-	background-color: #61AAD6;
-	border-radius: 16px;
+	background-color : #61AAD6;
+	border-radius : 16px;
 }
 .youtube {
-	background-color: #DF584E;
-	border-radius: 16px;
+	background-color : #DF584E;
+	border-radius : 16px;
 }
 .mail {
-	background-color: #FFFFFF;
-	border-radius: 16px;
+	background-color : #FFFFFF;
+	border-radius : 16px;
 }
 
 .mailbox {
-	background-color: #E5E5E5;
-	border-radius: 10px;
-	margin: 24px 0px 24px 0px;
+	background-color : #E5E5E5;
+	border-radius : 10px;
+	margin : 24px 0px 24px 0px;
 }
 .label_mails {
-	color: #404040;
+	color : #404040;
 	font-size : 24px;
 	font-weight : bold;
-	margin: 0px 6px 0px 6px;
+	margin : 0px 6px 0px 6px;
 }
 
 /** Power buttons ***************************************/
@@ -295,66 +376,66 @@
 }
 
 .btn_logout {
-	color: #BF616A;
+	color : #BF616A;
 }
 .btn_sleep {
-	color: #A3BE8C;
+	color : #A3BE8C;
 }
 .btn_reboot {
-	color: #EBCB8B;
+	color : #EBCB8B;
 }
 .btn_poweroff {
-	color: #88C0D0;
+	color : #88C0D0;
 }
 
 /** Home folders ***************************************/
 .hddbox {
-	background-color: #3A404C;
-	border-radius: 10px;
+	background-color : #3A404C;
+	border-radius : 10px;
 	margin : 15px;
 }
 .hddicon {
-	color: #81A1C1;
-	font-family: Iosevka Nerd Font;
+	color : #81A1C1;
+	font-family : Iosevka Nerd Font;
 	font-size : 70px;
 	font-weight : normal;
-	margin : 5px 10px 5px 25px;
+	margin : 5px 10px 5px 15px;
 }
 .hdd_label {
-	color: #E5E9F0;
+	color : #E5E9F0;
 	font-size : 32px;
 	font-weight : bold;
 	margin : 0px 0px 0px 10px;
 }
 .fs_sep {
-	color: #2E3440;
+	color : #2E3440;
 	font-size : 34px;
 	font-weight : bold;
 }
 
 .iconfolder1, .iconfolder2, .iconfolder3, .iconfolder4, .iconfolder5, .iconfolder6  {
-	font-family: Iosevka Nerd Font;
+	font-family : Iosevka Nerd Font;
 	font-size : 24px;
 	font-weight : normal;
-	margin : 0px 0px 0px 35px;
+	margin : 0px 0px 0px 25px;
 }
 .iconfolder1 {
-	color: #BF616A;
+	color : #BF616A;
 }
 .iconfolder2 {
-	color: #A3BE8C;
+	color : #A3BE8C;
 }
 .iconfolder3 {
-	color: #EBCB8B;
+	color : #EBCB8B;
 }
 .iconfolder4 {
-	color: #81A1C1;
+	color : #81A1C1;
 }
 .iconfolder5 {
-	color: #B48EAD;
+	color : #B48EAD;
 }
 .iconfolder6 {
-	color: #88C0D0;
+	color : #88C0D0;
 }
 
 .label_folder1, .label_folder2, .label_folder3, .label_folder4, .label_folder5, .label_folder6  {
@@ -363,35 +444,39 @@
 	margin : 0px 0px 0px 30px;
 }
 .label_folder1 {
-	color: #BF616A;
+	color : #BF616A;
 }
 .label_folder2 {
-	color: #A3BE8C;
+	color : #A3BE8C;
 }
 .label_folder3 {
-	color: #EBCB8B;
+	color : #EBCB8B;
 }
 .label_folder4 {
-	color: #81A1C1;
+	color : #81A1C1;
 }
 .label_folder5 {
-	color: #B48EAD;
+	color : #B48EAD;
 }
 .label_folder6 {
-	color: #88C0D0;
+	color : #88C0D0;
 }
 
 /*--|> NeoMusic <|--*/
 
 .art {
-	background-size : cover;
+	background-size : 62%;
+	background-repeat : no-repeat;
 	background-position : 100% 50%;
-	border-radius: 16px;
+	border-radius : 18px 16px 16px 18px;
 }
 
 .music_main, .art {
-	min-width: 396px;
-	border-radius: 16px;
+	min-width : 396px;
+}
+
+.music_main {
+	border-radius : 16px;
 }
 
 .music_main .song {
@@ -423,38 +508,71 @@
 
 .music_main .control, .music_main .song, .music_main .artist {
 	padding : 4px 0 4px 10px;
-	letter-spacing: 2px;
+	letter-spacing : 2px;
 }
 
 .music_main {
-	background : linear-gradient(120deg, #2E3440 /*#282c34*/ 55%, transparent);
+	background : linear-gradient(120deg, $bg-color /*#282c34*/ 55%, transparent);
 	padding : 4px 10px 4px 10px;
 }
 															
 /*--> NeoProfile <--*/
 
-.avatar, .profile_main {
-	border-radius : 16px;
-}
-
-.avatar {
+.avatar{
+	border-radius : 18px;
 	background-size : cover;
 	background-position : 50% 100%;
 }
 
 .profile_main {
-	background : linear-gradient(0deg, #2E3440 25%, transparent);
+	border-radius : 16px;
+}
+
+.profile_main {
+	background : linear-gradient(-5deg, $bg-color 10%, transparent, $bg-color 75%);
 	min-width : 246px;
 }
 
 .fullname {
-	margin : 240px 0 0 0;
+	margin : 10px 0 0 0;
+	color : #D46389;
+	font-size : 28px;
+	font-weight : bold;
+}
+
+.username {
+	color : #8FBCBB;
+	font-size : 22px;
+	font-weight : bold;
+	margin : -15px 0px 0px 0px;
 }
 
 /*--|> NeoClock <|--*/
 
+.uptitle {
+	color : #EBCB8B;
+	font-size : 22px;
+}
+
+.updays {
+	color : #81A1C1;
+	font-size : 28px;
+	font-weight : bold;
+}
+
+.uptime {
+	color : #61AFEF;
+	//color : #E5E9F0;
+	font-size : 24px;
+	font-weight : bold;
+}
+
+.nclock {
+	margin : 0px 0px 0px 26px;
+}
+
 .ntime_hour, .ntime_min {
-	color: #81A1C1;
+	color : #81A1C1;
 	font-size : 45px;
 	font-weight : bold;
 }
@@ -477,16 +595,64 @@
 }
 
 .ntime_mer {
-	color: #A3BE8C;
+	color : #A3BE8C;
 	font-size : 16px;
 	font-weight : bold;
 }
 
 .ntime_day {
 	margin : -8px 0px 0px 0px;
-	color: #EBCB8B;
+	color : #EBCB8B;
 	font-size : 18px;
 	font-weight : normal;
+}
+
+/*--> Workspaces <--*/
+.ws1, .ws2, .ws3, .ws4, .ws5, .ws6, .ws7, .ws8, .ws9, .ws10 {
+	font-size : 24px;
+}
+.ws1 {
+	color : #52E080;
+}
+
+.ws2 {
+	color : #D70040;
+}
+
+.ws3 {
+	color : #117dca;
+}
+
+.ws4 {
+	color : #32a7d9;
+}
+
+.ws5 {
+	color : #23cf5f;
+}
+
+.ws6 {
+	color : #80461b;
+}
+
+.ws7 {
+	color : #f4c430;
+}
+
+.ws8 {
+	color : #DA70D6;
+}
+
+.ws9 {
+	color : #800020;
+}
+
+.ws10 {
+	color : #F5F5F5;
+}
+
+.ws_holder {
+	margin : 24px 0 0 0;
 }
 
 /** EOF *************************************************/
