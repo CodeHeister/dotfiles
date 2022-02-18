@@ -63,8 +63,8 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 \
 \
 \
-![file managers](screenshots/file_managers.png)
-*thunar*\
+![thunar](screenshots/thunar.png)
+*dunst, thunar and eww calendar*\
 \
 \
 \
