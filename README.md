@@ -195,6 +195,9 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- `Mod+F3` : app searcher
 	- `Alt+Tab` : active apps searcher 
 	- `Mod+Shift+E` : powermenu
+	- `Mod+F6` : prev Spotify song
+	- `Mod+F7` : pause/resume Spotify song
+	- `Mod+F8` : next Spotify song
 	- `Mod+F9` : mute/unmute
 	- `Mod+F10` : volume down
 	- `Mod+F11` : volume up
