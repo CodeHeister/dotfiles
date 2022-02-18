@@ -85,25 +85,38 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 1. **Utils list :**
     - WM : [i3-gaps](https://github.com/Airblader/i3)
-	- Shell : zsh (ohmyzsh + starship)
-    - Fonts : [Iosevka](https://typeof.net/Iosevka/), [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
+	- Shell : zsh
+		- [starship](https://github.com/starship/starship)
+		- [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions)
+		- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+	- Fonts : [Iosevka](https://typeof.net/Iosevka/), [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
     - Icons : [Candy Icons](https://github.com/EliverLara/candy-icons), [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
     - Music player : [cmus](https://github.com/cmus/cmus) ([some themes](https://github.com/averms/base16-cmus))
     - Audio visualizer : [cava](https://github.com/karlstav/cava)
 	- Notification daemon : [dunst](https://github.com/dunst-project/dunst)
 	- Cursor : Breeze
-	- Terminal emulator : urxvt (urxvt-perl) <tmux>, kitty
+	- Terminal emulator : 
+		- URxvt <tmux> :
+			- [urxvt-perls](https://github.com/muennich/urxvt-perls)
+			- [urxvt-font-size](https://github.com/majutsushi/urxvt-font-size)
+			- [urxvt-tabbedex](https://github.com/stepb/urxvt-tabbedex)
+		- Kitty
 	- File manager : 
-		- GUI : thunar
 		- Terminal : [ranger](https://github.com/ranger/ranger)
+		- GUI : thunar
 	- Screenshot software : [maim](https://github.com/naelstrof/maim), [flameshot](https://github.com/flameshot-org/flameshot)
     - Widgets : [eww](https://github.com/elkowar/eww) ([docs](https://elkowar.github.io/eww/)) 
         - 1920x1080 : [adi1090x's widgets](https://github.com/adi1090x/widgets)
         - 1360x768 : [edited widgets](.config/eww) with Spotify
     - Statusbar : [lemonbar-xft](https://github.com/drscream/lemonbar-xft)
     - Text editor : 
-		- Terminal : [neovim](https://github.com/neovim/neovim) ([Plugin manager](https://github.com/junegunn/vim-plug)), ([Navarasu's onedark](https://github.com/navarasu/onedark.nvim), [Joshdick's onedark](https://github.com/joshdick/onedark.vim), [Crusoexia's monokai](https://github.com/crusoexia/vim-monokai))
-		- GUI : [xed](https://github.com/linuxmint/xed)
+		- Terminal : [neovim](https://github.com/neovim/neovim) 
+			- [Plugin manager](https://github.com/junegunn/vim-plug)
+			- Themes :
+				- [Navarasu's onedark](https://github.com/navarasu/onedark.nvim)
+				- [Joshdick's onedark](https://github.com/joshdick/onedark.vim)
+				- [Crusoexia's monokai](https://github.com/crusoexia/vim-monokai)
+		- GUI : [typora](https://typora.io), [xed](https://github.com/linuxmint/xed)
 	- Compositor : [Ibhagwan's picom](https://github.com/ibhagwan/picom-ibhagwan-git)
     - App launcher : [rofi](https://github.com/davatorium/rofi)
     - Wallpapers : [lambda wallpapers](https://github.com/pagankeymaster/lambda-wallpapers), [Aenami](https://www.reddit.com/user/Aenami/)
@@ -119,7 +132,8 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 		- [eww](https://aur.archlinux.org/packages/eww-git/)
 		- [cava](https://aur.archlinux.org/packages/cava/)
 		- [picom](https://aur.archlinux.org/packages/picom-ibhagwan-git/)
-		- [Papirus](https://archlinux.org/packages/community/any/papirus-icon-theme/)
+		- [Candy icons](https://aur.archlinux.org/packages/candy-icons-git)
+		- [Breeze](https://aur.archlinux.org/packages/breeze-default-cursor-theme)
 	- Pacman :
 		- i3-gaps (may replace your current i3, won't occur any major changes except adding gaps)
 		- cmus
@@ -127,11 +141,13 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 		- flameshot
 		- neovim (ctags)
 		- rofi
+		- feh
 		- urxvt
 		- thunar
 		- ranger (ueberzug)
 		- zathura
 		- dunst
+		- Papirus
 
 	- For AUR :
 		- `yay -S "package"` or `git clone "AUR_git_link"; cd "AUR_package"; makepkg -si`
