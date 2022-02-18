@@ -35,23 +35,27 @@ sound_toggle="amixer set Master toggle"
 launch_menu="$HOME/.config/eww/launch_eww"
 launch_cal="$HOME/.config/eww/launch_eww_cal"
 
+# Scroll move
+workspace_prev="i3-msg workspace prev"
+workspace_next="i3-msg workspace next"
+
 # Main colors
 fg="#abb2bf"
 bg="#282c34"
-red="#dc322f"
-yellow="#b58900"
+red="#FF0800" #"#dc322f"
+yellow="#FFC40C" #"#b58900"
 ws_bg="#554b5263"
 ws_urgent="#aadc322f"
 ws_color=(
 	"#52E080" 
-	"#D70040" 
+	"#DA1212" 
 	"#117dca" 
 	"#32a7d9" 
 	"#23cf5f" 
-	"#80461b" 
-	"#f4c430" 
-	"#DA70D6" 
-	"#800020" 
+	"#B3541E" 
+	"#FFC600" 
+	"#A267AC" 
+	"#B33030" 
 	"#F5F5F5"
 )
 
@@ -316,7 +320,7 @@ while true; do
 
 	# Taskbar
         echo 	"%{c}%{F$fg}%{B-}%{A:$launch_cal:}  $(clock) %{A}\
-		%{l}%{A:$launch_menu:}  %{A}$(workspaces)\
+		%{l}%{A:$launch_menu:}  %{A}%{A4:$workspace_prev:}%{A5:$workspace_next:}$(workspaces)%{A}%{A}\
 		%{r}$(get_music) $cpu_out $ram_out%{A:$sound_toggle:}%{A4:$sound_up:}%{A5:$sound_down:} $vol_out %{A}%{A}%{A}%{F-}%{B-}"
 	
 	# Delay (in seconds)
