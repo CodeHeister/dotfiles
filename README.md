@@ -54,7 +54,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 \
 \
 ![urxvt](screenshots/terminal.png)
-*terminal emulator and type test*\
+*terminal emulators and type test*\
 \
 \
 \
@@ -63,13 +63,8 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 \
 \
 \
-![eww](screenshots/obsidian.png)
-*obsidian markdown vaults*\
-\
-\
-\
 ![file managers](screenshots/file_managers.png)
-*xed, foliate and thunar*\
+*thunar*\
 \
 \
 \
@@ -95,6 +90,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
     - Audio visualizer : [cava](https://github.com/karlstav/cava)
 	- Notification daemon : [dunst](https://github.com/dunst-project/dunst)
 	- Cursor : Breeze
+	- GTK Theme : [Qogir](https://github.com/vinceliuice/Qogir-theme)
 	- Terminal emulator : 
 		- URxvt <tmux> :
 			- [urxvt-perls](https://github.com/muennich/urxvt-perls)
@@ -134,6 +130,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 		- [picom](https://aur.archlinux.org/packages/picom-ibhagwan-git/)
 		- [Candy icons](https://aur.archlinux.org/packages/candy-icons-git)
 		- [Breeze](https://aur.archlinux.org/packages/breeze-default-cursor-theme)
+		- [Qogir](https://aur.archlinux.org/packages/qogir-gtk-theme)
 	- Pacman :
 		- i3-gaps (may replace your current i3, won't occur any major changes except adding gaps)
 		- cmus
