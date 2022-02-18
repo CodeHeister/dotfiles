@@ -1,13 +1,16 @@
-! MAIN CONFIGURATION
-!-------------------------------------------------------------------------------
+! +------------------------------------------+
+! | :: M A I N  C O N F I G U R A T I O N :: |
+! +------------------------------------------+
+
 ! Set as login shell
 URxvt*loginShell: true
 
 ! Border
+
 URxvt.internalBorder:       3
-URxvt.lineSpace:            0
 
 ! Blur
+
 !URxvt*.transparent: true
 !URxvt*.shading: 30
 !URxvt*.blurRadius: 10
@@ -32,14 +35,23 @@ URxvt*scrollBar: false
 ! scrollbar style - rxvt (default), plain, next, or xterm
 !URxvt*scrollstyle: rxvt
 
-!! CURSOR 
-!-------------------------------------------------------------------------------
-!URxvt.cursorBlink: 1
-!URxvt.cursorUnderline: 1
+
+! +-------------------+
+! | :: C U R S O R :: | 
+! +-------------------+
+
+URxvt.cursorBlink: 1
+URxvt.cursorUnderline: 1
 
 
-!! FONTS
-!-------------------------------------------------------------------------------
+! +-----------------+
+! | :: F O N T S :: |
+! +-----------------+
+
+URxvt*font: xft:Iosevka Medium Extended:pixelsize=14:antialias=true:hinting=true,xft:Hack Nerd Font:pixelsize=8:antialias=true:minspace=true:antialias=true:hinting=true
+URxvt*boldFont: xft:Iosevka Extended:style=Bold Extended:pixelsize=14:antialias=true:hinting=true
+URxvt*lineSpace: 0
+
 ! Xft (X FreeType) with Bitstream, DejaVu, Liberation, or Terminus fonts:
 !  Fedora/debian packages: libXft/libxft2 
 !  An anti-aliased font setup with Xft looks fantastic! it can be a bit choppy 
@@ -53,13 +65,6 @@ URxvt*scrollBar: false
 !URxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=13:antialias=true:hinting=true
 !URxvt*boldFont: xft:Bitstream Vera Sans Mono:bold:pixelsize=13:antialias=true:hinting=true
 
-
-URxvt*font: xft:Iosevka Medium Extended:pixelsize=14,xft:Hack Nerd Font:pixelsize=8:antialias=true:minspace=True
-URxvt*boldFont: xft:Iosevka Extended:style=Bold Extended:pixelsize=14
-
-! URxvt*lineSpace: -4
-
-!
 ! Xft: DejaVu fonts
 !  Fedora/debian packages: dejavu-sans-mono-fonts/ttf-dejavu 
 !URxvt*font: xft:DejaVu Sans Mono:pixelsize=13:antialias=true:hinting=true
@@ -79,231 +84,130 @@ URxvt*boldFont: xft:Iosevka Extended:style=Bold Extended:pixelsize=14
 !URxvt*font:-*-courier-medium-r-normal-*-14-*-*-*-*-*-iso8859-1
 !URxvt*boldFont:-*-courier-bold-r-normal-*-14-*-*-*-*-*-iso8859-1
 
-!! packer -S urxvt-resize-font-git
+!! yay -S urxvt-resize-font-git
 !URxvt.resize-font.smaller: C-Down
 !URxvt.resize-font.bigger: C-Up
 
 
-! From ARch-Installer-1
+!! From ARch-Installer-1
 !xterm*faceName: Dejavu Sans Mono:style=Book:antialias=true:hinting=medium
 !xterm*faceSize: 10
 !URxvt.font: xft:Dejavu Sans Mono:bold:size=12:antialias=true:hinting=true
 !URxvt.letterSpace: -2
+!
 !! USING THESE FONTS
 !URxvt.font: xft:Dejavu Sans Mono:bold:style=Book:size=10:antialias=true:hinting=true
 !URxvt.font: xft:Px437 ATI 8x16:style=Regular:size=12:antialias=true:hinting=true
 !URxvt.font: xft:Px437 IBM VGA9:style=Regular:size=12:antialias=true:hinting=true
 
 
-!! PERL COMMON EXTENSIONS
-!-------------------------------------------------------------------------------
+! +-------------------------------------------------+
+! | :: P E R L  C O M M O N  E X T E N S I O N S :: |
+! +-------------------------------------------------+
+
 !! Settings from arch wiki https://wiki.archlinux.org/index.php/Rxvt-unicode
-!! installed packer -S rxvt-unicode-patched-9.21-3
+!! installed yay -S rxvt-unicode-patched-9.21-3
 !! installed pacman -S urxvt-perls
-!!-> To enable extensions place the following in ~/.Xresources
+!! To enable extensions place the following in ~/.Xresources
 !! Common settingd for URxvt.perl.-ext-common, set more features in succession
-!!URxvt.perl-ext-common:default,clipboard,keyboard-select,url-select,tabbedex
 
-!URxvt.perl-ext-common:default,tabbedex
-URxvt.perl-ext-common:default
+URxvt.perl-ext-common:default,clipboard,keyboard-select,url-select,tabbedex,,font-size
 
 
-!! CUT AND PASTE
-!-------------------------------------------------------------------------------
-!!Default key bindings
-!!Default X key bindings will still work for copying and pasting.
-!!After selecting the text Ctrl+Insert or Ctrl+Alt+C 
-!!can be used to copy and Shift+Insert or Ctrl+Alt+V to paste.
+! +-------------------------------+
+! | :: C U T  A N D  P A S T E :: |
+! +-------------------------------+
+
+!! Default key bindings
+!! Default X key bindings will still work for copying and pasting.
+!! After selecting the text Ctrl+Insert or Ctrl+Alt+C 
+!! can be used to copy and Shift+Insert or Ctrl+Alt+V to paste.
+
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 
-!! apacman -S urxvt-clipboard
-!!for cut and paste
-!!ctlr+c ctrl+v, middle mouse
-
-!! URL SELECT
-!-------------------------------------------------------------------------------
-!URxvt.url-select.launcher:  google-chrome-stable
-!URxvt.url-select.underline: true
-!URxvt.keysym.M-u:           perl:url-select:select_next
-!URxvt.keysym.M-Escape:      perl:keyboard-select:activate
-!URxvt.keysym.M-s:           perl:keyboard-select:search
+!! pacman -S urxvt-clipboard
+!! for cut and paste
+!! ctlr+c ctrl+v, middle mouse
 
 
-!! TABS
-!-------------------------------------------------------------------------------
-!! installed packer -S urxvt-tabbedex-git
+! +------------------------------------+
+! | :: F O N T  S I Z E  O N  F L Y :: |
+! +------------------------------------+
+
+! Allowes you to change font size
+! installed yay -S urxvt-font-size-git
+
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+
+! Resize amount
+
+URxvt.font-size.step: 4
+
+
+! +--------------------------+
+! | :: U R L  S E L E C T :: |
+! +--------------------------+
+
+URxvt.url-select.launcher:  vivaldi-stable
+URxvt.url-select.underline: true
+URxvt.url-select.url_button: 1
+URxvt.keysym.Control-u:           perl:url-select:select_next
+URxvt.keysym.Control-Escape:      perl:keyboard-select:activate
+URxvt.keysym.Control-s:           perl:keyboard-select:search
+
+
+! +---------------+
+! | :: T A B S :: |
+! +---------------+
+
+!! installed yay -S urxvt-tabbedex-git
 !! unset the default shortkeys
 !URxvt.tabbed.no-tabbedex-keys: true
 !! disable closing last tab
 
 !! Normal tabbed default shortkeys
-!!Shift+Down	New tab
-!!Shift+Left	Go to left tab
-!!Shift+Right	Go to right tab
-!!Ctrl+Left	Move tab to the left
-!!Ctrl+Right	Move tab to the right
-!! Ctrl+d	Close tab
+!! - Shift+Up	 :  Rename
+!! - Shift+Down	 :	New tab
+!! - Shift+Left	 :	Go to left tab
+!! - Shift+Right :	Go to right tab
+!! - Ctrl+Left	 :	Move tab to the left
+!! - Ctrl+Right	 :	Move tab to the right
+!! - Ctrl+d		 :	Close tab
 !! tabbedex extension shortkeys
-URxvt.keysym.Control-t: perl:tabbedex:new_tab
-URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
-URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+
+!URxvt.keysym.Control-t: perl:tabbedex:new_tab
+!URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+!URxvt.keysym.Control-M-Tab: perl:tabbedex:prev_tab
 
 
 !! Tabs URxvt.perl-ext-common:...,tabbed....
-!! tab colors
-URxvt.tabbed.tabbar-fg: 2
+!! Tab colors :
+URxvt.tabbed.tabbar-fg: 3
 URxvt.tabbed.tabbar-bg: 0
-URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-fg: 2
 URxvt.tabbed.tab-bg: 0
 
 
-!! COLORS
-!-------------------------------------------------------------------------------
-! font color (default is black)
-!URxvt*foreground: White
-!URxvt.foreground:   #4ad5e1
-!URxvt*background: Black
-!URxvt.background:   #0e0e0e
-!URxvt.background: rgb:33/33/33
-!paars
-!URxvt.background: #400060
-!URxvt.background: #6C7B8B
-
-
-!! Other colors
-!URxvt.cursorColor:  #dc74d1
-!URxvt.pointerColor: #dc74d1
-!URxvt*color0: black
-!URxvt*color1: red3
-!URxvt*color2: green3
-!URxvt*color3: yellow3
-!URxvt*color4: blue2
-!URxvt*color4: RoyalBlue
-!URxvt*color5: magenta3
-!URxvt*color6: cyan3
-!URxvt*color7: gray90
-!URxvt*color8: grey50
-!URxvt*color9: red
-!URxvt*color10: green
-!URxvt*color11: yellow
-!URxvt*color12: RoyalBlue
-!URxvt*color12: blue
-!URxvt*color13: magenta
-!URxvt*color14: cyan
-!URxvt*color15: white
-
-!! test pretty girl scheme
-!URxvt.cursorColor:  #dc74d1
-!URxvt.pointerColor: #dc74d1
-!URxvt.background:   #0e0e0e
-!URxvt.foreground:   #4ad5e1
-!URxvt.color0:       #000000
-!URxvt.color8:       #8b8f93
-!URxvt.color1:       #dc74d1
-!URxvt.color9:       #dc74d1
-!URxvt.color2:       #0eb8c7
-!URxvt.color10:      #0eb8c7
-!URxvt.color3:       #dfe37e
-!URxvt.color11:      #dfe37e
-!URxvt.color5:       #9e88f0
-!URxvt.color13:      #9e88f0
-!URxvt.color6:       #73f7ff
-!URxvt.color14:      #73f7ff
-!URxvt.color7:       #e1dddd
-!URxvt.color15:      #e1dddd
-
-!Theme Seven
-!URxvt.background: rgb:67/67/67
-!URxvt.foreground: rgb:ff/ff/ff
-!URxvt.color0:     rgb:00/00/00
-!URxvt.color1:     rgb:bf/46/46
-!URxvt.color2:     rgb:67/b2/5f
-!URxvt.color3:     rgb:cf/c4/4e
-!URxvt.color4:     rgb:51/60/83
-!URxvt.color5:     rgb:ca/6e/ff
-!URxvt.color6:     rgb:92/b2/f8
-!URxvt.color7:     rgb:d5/d5/d5
-!URxvt.color8:     rgb:00/00/00
-!URxvt.color9:     rgb:f4/8a/8a
-!URxvt.color10:    rgb:a5/d7/9f
-!URxvt.color11:    rgb:e1/da/84
-!URxvt.color12:    rgb:a2/bb/ff
-!URxvt.color13:    rgb:e2/b0/ff
-!URxvt.color14:    rgb:ba/cd/f8
-!URxvt.color15:    rgb:d5/d5/d5
-
-!Theme Eight
-!URxvt.background: rgb:10/10/10
-!URxvt.foreground: rgb:d3/d3/d3
-!URxvt.color0:     rgb:10/10/10
-!URxvt.color1:     rgb:cd/5c/5c
-!URxvt.color2:     rgb:2e/8b/57
-!URxvt.color3:     rgb:f0/e6/8c
-!URxvt.color4:     rgb:b0/c4/de
-!URxvt.color5:     rgb:ba/55/d3
-!URxvt.color6:     rgb:46/82/b4
-!URxvt.color7:     rgb:d3/d3/d3
-!URxvt.color8:     rgb:4d/4d/4d
-!URxvt.color9:     rgb:ff/6a/6a
-!URxvt.color10:    rgb:8f/bc/8f
-!URxvt.color11:    rgb:ff/fa/cd
-!URxvt.color12:    rgb:1e/90/ff
-!URxvt.color13:    rgb:db/70/93
-!URxvt.color14:    rgb:5f/9e/a0
-!URxvt.color15:    rgb:ff/ff/ff
-
-!Theme Eleven
-!URxvt.background: rgb:33/33/33
-!URxvt.foreground: rgb:ff/ff/ff
-!URxvt.color0:     rgb:33/33/33
-!URxvt.color8:     rgb:33/33/33
-!URxvt.color1:     rgb:ff/a0/a0
-!URxvt.color9:     rgb:ff/a0/a0
-!URxvt.color2:     rgb:98/fb/98
-!URxvt.color10:    rgb:9a/cd/32
-!URxvt.color3:     rgb:f0/e6/8c
-!URxvt.color11:    rgb:f0/e6/8c
-!URxvt.color4:     rgb:87/ce/eb
-!URxvt.color12:    rgb:87/ce/eb
-!URxvt.color5:     rgb:ff/a0/a0
-!URxvt.color13:    rgb:ff/a0/a0
-!URxvt.color6:     rgb:87/ce/eb
-!URxvt.color14:    rgb:87/ce/eb
-!URxvt.color7:     rgb:ff/ff/ff
-!URxvt.color15:    rgb:ff/ff/ff
+! +-------------------+
+! | :: C O L O R S :: |
+! +-------------------+
 
 ! Pointer
+
 URxvt.pointerBlank:         true
 
 ! Fix font space
+
 URxvt.letterSpace: 0
-
-! Solarized
-!*background:   [97]#282a36
-!*foreground:   #eff0eb
-!*cursorColor:  #9aedfe
-
-!*color0:      #33303b
-!*color8:      #4f4b58
-!*color1:      #ff5c57
-!*color9:      #ff5c57
-!*color2:      #5af78e
-!*color10:     #5af78e
-!*color3:      #f3f99d
-!*color11:     #f3f99d
-!*color4:      #57c7ff
-!*color12:     #57c7ff
-!*color5:      #ff6ac1
-!*color13:     #ff6ac1
-!*color6:      #9aedfe
-!*color14:     #9aedfe
-!*color7:      #eff0eb
-!*color15:     #eff0eb
-
 URxvt.intensityStyles: false
 
 ! Common
@@ -332,14 +236,14 @@ URxvt.intensityStyles: false
 
 ! Light
 
-! #define S_base03        #fdf6e3
-! #define S_base02        #eee8d5
-! #define S_base01        #93a1a1
-! #define S_base00        #839496
-! #define S_base0         #657b83
-! #define S_base1         #586e75
-! #define S_base2         #4b5263
-! #define S_base3         #282c34
+!#define S_base03        #fdf6e3
+!#define S_base02        #eee8d5
+!#define S_base01        #93a1a1
+!#define S_base00        #839496
+!#define S_base0         #657b83
+!#define S_base1         #586e75
+!#define S_base2         #4b5263
+!#define S_base3         #282c34
 
 
 ! To only apply colors to your terminal, for example, prefix
@@ -347,7 +251,7 @@ URxvt.intensityStyles: false
 !
 ! URxvt*background:            S_base03
 
-URxvt*depth		  32
+URxvt*depth:			  32
 *background:              S_base03
 *foreground:              S_base0
 *fading:                  40
@@ -364,38 +268,11 @@ URxvt*depth		  32
 *color5:                  S_magenta
 *color6:                  S_cyan
 *color7:                  S_base2
+*color8:                  #BBBBBB
 *color9:                  S_orange
-*color8:                  S_base03
 *color10:                 S_base01
 *color11:                 S_base00
 *color12:                 S_base0
 *color13:                 S_violet
 *color14:                 S_base1
 *color15:                 S_base3
-
-!*.foreground:               #ebdbb2
-!*.background:               #272727
-
-!*.color0:                   #272727
-!*.color8:                   #928373
-
-!*.color1:                   #cc231c
-!*.color9:                   #fb4833
-
-!*.color2:                   #989719
-!*.color10:                  #b8ba25
-
-!*.color3:                   #d79920
-!*.color11:                  #fabc2e
-
-!*.color4:                   #448488
-!*.color12:                  #83a597
-
-!*.color5:                   #b16185
-!*.color13:                  #d3859a
-
-!*.color6:                   #689d69
-!*.color14:                  #8ec07b
-
-!*.color7:                   #a89983
-!*.color15:                  #ebdbb2
