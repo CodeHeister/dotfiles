@@ -85,13 +85,14 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 1. **Utils list :**
     - WM : [i3-gaps](https://github.com/Airblader/i3)
+	- Shell : zsh (ohmyzsh + starship)
     - Fonts : [Iosevka](https://typeof.net/Iosevka/), [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
     - Icons : [Candy Icons](https://github.com/EliverLara/candy-icons), [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
     - Music player : [cmus](https://github.com/cmus/cmus) ([some themes](https://github.com/averms/base16-cmus))
     - Audio visualizer : [cava](https://github.com/karlstav/cava)
 	- Notification daemon : [dunst](https://github.com/dunst-project/dunst)
 	- Cursor : Breeze
-	- Terminal emulator : urxvt
+	- Terminal emulator : urxvt (urxvt-perl) <tmux>, kitty
 	- File manager : 
 		- GUI : thunar
 		- Terminal : [ranger](https://github.com/ranger/ranger)
@@ -108,12 +109,9 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
     - Wallpapers : [lambda wallpapers](https://github.com/pagankeymaster/lambda-wallpapers), [Aenami](https://www.reddit.com/user/Aenami/)
 	- Document viewer : [zathura](https://github.com/pwmt/zathura) ([Dracula theme](https://github.com/dracula/zathura))
 	- Type Test : [tt](https://github.com/lemnos/tt)
-	- Terminal decoration : [pipes.sh](https://github.com/pipeseroni/pipes.sh), [cmatrix](https://github.com/abishekvashok/cmatrix), [cbonsai](https://gitlab.com/jallbrit/cbonsai) 
-	- Coming soon :
-		- Markdown Editor and Graph Visualisation : [obsidian](https://obsidian.md)
-		- Terminal emulator : kitty
+	- Terminal decoration : [pipes.sh](https://github.com/pipeseroni/pipes.sh), [cmatrix](https://github.com/abishekvashok/cmatrix), [cbonsai](https://gitlab.com/jallbrit/cbonsai)
+	- Markdown Knowledge Vault : [obsidian](https://obsidian.md)
 
-	Everything is described for Arch Linux.
 	- AUR :
 		- [Iosevka](https://aur.archlinux.org/ttf-iosevka/)
 		- [Hack Nerd Fonts](https://aur.archlinux.org/nerd-fonts-hack/)
@@ -154,7 +152,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 # Hotkeys
 
-- This hotkeys are in `.config/i3/config` :
+- i3-gaps (`.config/i3/config`) :
 	- `Mod+[0-9]` : go to workspace
 	- `Mod+Shift+[0-9]` : move active window to workspace
 	- `Alt+Ctrl+[A/D]` : move to the left/right workspace
@@ -206,17 +204,49 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 			- `Esc` : exit gaps editor
 	- `Mod+Shift+T` or `Mod+Enter` : launch terminal
 	- `Mod+Shift+Q` : close current app
-	- `Mod+M` : launch/exit eww
-- This hotkeys are in `.xinitrc` :
-	- `Alt+Tab` : change keyboard layout (disabled) uncomment `setxkbmap` and add your layouts)
+	- `Mod+F1` : launch/exit eww
 	- `Mod+DragMouseLeftButton` : drag floating windows
 	- `Mod+DragMouseRightButton` : resize non-floating windows and gaps between them
-
+<br><br>
+- X11 (`.xinitrc`) :
+	- `Alt+Tab` : change keyboard layout (disabled) uncomment `setxkbmap` and add your layouts)
+<br><br>
+- URxvt (`.Xresources.d/urxvt-unicode`):
+	- `Tab` : autofill
+	- `Shift+Tab` : autofill (backwards)
+	- `Ctrl+Shift+C` : copy
+	- `Ctrl+Shift+V` : paste
+	- `Ctrl+Up` : increase font size
+	- `Ctrl+Down` : decrease font size
+	- `Ctrl+Shift+Up` : increase font size (global)
+	- `Ctrl+Shift+Down` : decrease font size (global)
+	- `Ctrl+=` : reset font size
+	- `Ctrl+/` : show font size
+	- `Ctrl+u` : select urls
+	- `Ctrl+s` : search in terminal
+	- `Ctrl+Esc` : activate selection mode
+		- `[h/j/k/l]` : Move cursor left/down/up/right (also with arrow keys)
+		- `[g/G/0/^/$/H/M/L/f/F/;/,/w/W/b/B/e/E]` : More vi-like cursor movement keys
+		- `['/'/?]` : Start forward/backward search
+		- `[n/N]`: Repeat last search, N: in reverse direction
+		- `Ctrl+[f/b]` : Scroll down/up one screen
+		- `Ctrl+[d/u]` : Scroll down/up half a screen
+		- `[v/V/Ctrl+v]` : Toggle normal/linewise/blockwise selection
+		- `[y/Return]` : Copy selection to primary buffer, Return: quit afterwards
+		- `Y` : Copy selected lines to primary buffer or cursor line and quit
+		- `[q/Escape]` : Quit keyboard selection mode
+	- `Shift+Down` : open new tab
+	- `Ctrl+d` : close tab
+	- `Shift+Up` : rename
+	- `Ctrl+[Left/Right]` : move tabs (left/right)
+	- `Shift+[Left/Right]` : go to tab (left/right)
+	
 # ToDo List
 
 - [x] Onedark Thunar
 - [x] Change eww widgets
 - [x] Add startpage
+- [x] Better urxvt
 
 # Afterwords
 

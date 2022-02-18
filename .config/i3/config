@@ -27,7 +27,7 @@ set $eww $HOME/.config/eww
 set $wallpaper $HOME/.config/wallpaper
 set $dunst $HOME/.config/dunst
 set $picom $HOME/.config/picom
-set $lemonbar "~/.config/lemonbar/bar | lemonbar -p -n 'Lemonbar' -a 23 -f 'Iosevka Medium:pixelsize=14' -f 'Hack Nerd Font:pixelsize=15' | while read line; do eval '${line}'; done && notify-send -u low 'Lemonbar' 'Your statusbar was stopped' || notify-send -u low 'Lemonbar' 'Something went wrong'"
+set $lemonbar "~/.config/lemonbar/bar | lemonbar -p -n 'Lemonbar' -a 25 -f 'Iosevka Medium:pixelsize=14' -f 'Hack Nerd Font:pixelsize=15' | while read line; do eval '${line}'; done && notify-send -u low 'Lemonbar' 'Your statusbar was stopped' || notify-send -u low 'Lemonbar' 'Something went wrong'"
 
 # Use super/alt/control key
 set $mod Mod4
@@ -226,6 +226,19 @@ bindsym $mod+$shift+A exec --no-startup-id $lemonbar
 
 # Close lemonbar
 bindsym $mod+$shift+D exec --no-startup-id pkill lemonbar
+
+#################
+# Spitify hotkeys
+#################
+
+# Next
+bindsym $mod+F8 exec --no-startup-id ~/.config/eww/scripts/music_info --next
+
+# Prev
+bindsym $mod+F6 exec --no-startup-id ~/.config/eww/scripts/music_info --prev
+
+# Toggle
+bindsym $mod+F7 exec --no-startup-id ~/.config/eww/scripts/music_info --toggle
 
 ##################
 # Bumblebee-status
@@ -488,4 +501,4 @@ bindsym $mod+$shift+t exec $term
 # Launch eww widgets
 ####################
 
-bindsym $mod+M exec --no-startup-id $eww/launch_eww
+bindsym $mod+F1 exec --no-startup-id $eww/launch_eww
