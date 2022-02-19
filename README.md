@@ -121,35 +121,36 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- Terminal decoration : [pipes.sh](https://github.com/pipeseroni/pipes.sh), [cmatrix](https://github.com/abishekvashok/cmatrix), [cbonsai](https://gitlab.com/jallbrit/cbonsai)
 	- Markdown Knowledge Vault : [obsidian](https://obsidian.md)
 
-	- AUR :
-		- [Iosevka](https://aur.archlinux.org/ttf-iosevka/)
-		- [Hack Nerd Fonts](https://aur.archlinux.org/nerd-fonts-hack/)
-		- [lemonbar-xft](https://aur.archlinux.org/lemonbar-xft-git/)
-		- [eww](https://aur.archlinux.org/packages/eww-git/)
-		- [cava](https://aur.archlinux.org/packages/cava/)
-		- [picom](https://aur.archlinux.org/packages/picom-ibhagwan-git/)
-		- [Candy icons](https://aur.archlinux.org/packages/candy-icons-git)
-		- [Breeze](https://aur.archlinux.org/packages/breeze-default-cursor-theme)
-		- [Qogir](https://aur.archlinux.org/packages/qogir-gtk-theme)
-	- Pacman :
-		- i3-gaps (may replace your current i3, won't occur any major changes except adding gaps)
-		- cmus
-		- maim
-		- flameshot
-		- neovim (ctags)
-		- rofi
-		- feh
-		- urxvt
-		- thunar
-		- ranger (ueberzug)
-		- zathura
-		- dunst
-		- Papirus
-
-	- For AUR :
-		- `yay -S "package"` or `git clone "AUR_git_link"; cd "AUR_package"; makepkg -si`
-	- For Pacman :
-		- `pacman -S "package"`
+	
+- AUR :
+	- [Iosevka](https://aur.archlinux.org/ttf-iosevka/)
+	- [Hack Nerd Fonts](https://aur.archlinux.org/nerd-fonts-hack/)
+	- [lemonbar-xft](https://aur.archlinux.org/lemonbar-xft-git/)
+	- [eww](https://aur.archlinux.org/packages/eww-git/)
+	- [cava](https://aur.archlinux.org/packages/cava/)
+	- [picom](https://aur.archlinux.org/packages/picom-ibhagwan-git/)
+	- [Candy icons](https://aur.archlinux.org/packages/candy-icons-git)
+	- [Breeze](https://aur.archlinux.org/packages/breeze-default-cursor-theme)
+	- [Qogir](https://aur.archlinux.org/packages/qogir-gtk-theme)
+- Pacman :
+	- i3-gaps (may replace your current i3, won't occur any major changes except adding gaps)
+	- cmus
+	- maim
+	- flameshot
+	- neovim (ctags)
+	- rofi
+	- feh
+	- urxvt
+	- thunar
+	- ranger (ueberzug)
+	- zathura
+	- dunst
+	- Papirus
+<br><br>
+- For AUR :
+	- `yay -S "package"` or `git clone "AUR_git_link"; cd "AUR_package"; makepkg -si`
+- For Pacman :
+	- `pacman -S "package"`
 
 2. **Adding configs :**
 	- Clone this repository. `https://github.com/CodeHeister/dotfiles`
