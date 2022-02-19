@@ -368,13 +368,13 @@ for_window [title="Steam Library Folders|Create or select new Steam library fold
 ###############
 
 # Launch an app
-bindsym $mod+F3 exec rofi -no-lazy-grab -show drun -theme "$rofi/searcher.rasi" -icon-theme "candy-icons"
+bindsym $mod+F3 exec rofi -no-lazy-grab -show drun -theme "${rofi}/searcher.rasi" -icon-theme "candy-icons"
 
 # Active apps
-bindsym $alt+Tab exec rofi -no-lazy-grab -show window -theme "$rofi/active_apps.rasi" -icon-theme "candy-icons"
+bindsym $alt+Tab exec rofi -no-lazy-grab -show window -theme "${rofi}/active_apps.rasi" -icon-theme "candy-icons"
 
 # Powermenu
-bindsym $mod+Shift+e exec rofi -modi 'Powermenu:$rofi/powermenu.sh' -theme $rofi/powermenu.rasi -show Powermenu -icon-theme "candy-icons"
+bindsym $mod+Shift+e exec rofi -modi 'Powermenu:$rofi/powermenu.sh' -theme ${rofi}/powermenu.rasi -show Powermenu -icon-theme "candy-icons"
 
 bindsym $mod+Shift+p exec i3lock -c 000000
 

@@ -147,6 +147,7 @@ element alternate.urgent {
     text-color:       @selected-bg;
 }
 
+/*
 mode-switcher {
     border:       0px 0px 0px ;
     border-color: @separatorcolor;
@@ -161,3 +162,4 @@ button.selected {
     background-color: @selected-bg;
     text-color:       @selected-fg;
 }
+*/
