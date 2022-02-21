@@ -220,7 +220,9 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 			- `Shift+0` : set all gaps 0
 			- `Esc` : exit gaps editor
 	- `Mod+Shift+T` or `Mod+Enter` : launch terminal
-	- `Mod+Shift+Q` : close current app
+	- `Mod+Q` : hide current window
+	- `Mod+Z` : roll through hidden windows
+	- `Mod+Shift+Q` : close current window
 	- `Mod+F1` : launch/exit eww
 	- `Mod+DragMouseLeftButton` : drag floating windows
 	- `Mod+DragMouseRightButton` : resize non-floating windows and gaps between them

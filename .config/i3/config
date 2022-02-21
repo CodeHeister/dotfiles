@@ -502,3 +502,10 @@ bindsym $mod+$shift+t exec $term
 ####################
 
 bindsym $mod+F1 exec --no-startup-id $eww/launch_eww
+
+##############
+# Hide windows
+##############
+
+bindsym $mod+q move scratchpad
+bindsym $mod+z scratchpad show
