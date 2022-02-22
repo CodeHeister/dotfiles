@@ -66,9 +66,23 @@ ws_color=(
 ###
 # time ;; Time
 
+mode=`i3-msg -t get_binding_state | cut -d '"' -f 4`
+ch_mode="i3-msg mode \"default\""
+clock_out=""
+
 clock() {
-        time=$(date "+%a %b %d, %T")
-        echo -n "$time" # Clock output
+	local tmp_mode=$(i3-msg -t get_binding_state | cut -d '"' -f 4)
+	if [[ $mode != $tmp_mode ]]; then
+		clock_out="%{A:$ch_mode:} %{F$red}$tmp_mode%{F$fg}%{A}"
+		mode=$tmp_mode
+	else
+		if [[ $mode != "default" ]]; then
+			clock_out="%{A:$ch_mode:} %{F$yellow}$tmp_mode%{F$fg}%{A}"
+		else
+			clock_out="%{A:$launch_cal:} $(date "+%a %b %d, %T")%{A}"
+		fi
+	fi
+    # echo -n "$time" # Clock output
 }
 
 #########
@@ -316,10 +330,10 @@ ram_stat() {
 # cpu_stat ;; CPU Usage
 
 while true; do
-	volume; cpu_stat; ram_stat	# Used externally to keep and change global vars like last value, iterations and etc. (Output is stored in vars, not via echo)
+	volume; cpu_stat; ram_stat; clock;	# Used externally to keep and change global vars like last value, iterations and etc. (Output is stored in vars, not via echo)
 
 	# Taskbar
-        echo 	"%{c}%{F$fg}%{B-}%{A:$launch_cal:}  $(clock) %{A}\
+        echo 	"%{c}%{F$fg}%{B-} $clock_out \
 		%{l}%{A:$launch_menu:}  %{A}%{A4:$workspace_prev:}%{A5:$workspace_next:}$(workspaces)%{A}%{A}\
 		%{r}$(get_music) $cpu_out $ram_out%{A:$sound_toggle:}%{A4:$sound_up:}%{A5:$sound_down:} $vol_out %{A}%{A}%{A}%{F-}%{B-}"
 	
