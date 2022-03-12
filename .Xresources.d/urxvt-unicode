@@ -160,7 +160,7 @@ URxvt.font-size.step: 4
 URxvt.url-select.launcher:  vivaldi-stable
 URxvt.url-select.underline: true
 URxvt.url-select.url_button: 1
-URxvt.keysym.Control-u:           perl:url-select:select_next
+URxvt.keysym.Control-Tab:           perl:url-select:select_next
 URxvt.keysym.Control-Escape:      perl:keyboard-select:activate
 URxvt.keysym.Control-s:           perl:keyboard-select:search
 

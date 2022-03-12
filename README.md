@@ -241,7 +241,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- `Ctrl+Shift+Down` : decrease font size (global)
 	- `Ctrl+=` : reset font size
 	- `Ctrl+/` : show font size
-	- `Ctrl+u` : select urls
+	- `Ctrl+Tab` : select urls
 	- `Ctrl+s` : search in terminal
 	- `Ctrl+Esc` : activate selection mode
 		- `[h/j/k/l]` : Move cursor left/down/up/right (also with arrow keys)
