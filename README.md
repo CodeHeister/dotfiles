@@ -127,10 +127,11 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- Terminal decoration : [pipes.sh](https://github.com/pipeseroni/pipes.sh), [cmatrix](https://github.com/abishekvashok/cmatrix), [cbonsai](https://gitlab.com/jallbrit/cbonsai)
 	- Markdown Knowledge Vault : [obsidian](https://obsidian.md)
 
-	
+## Required packages : 	
 - AUR :
 	- [Iosevka](https://aur.archlinux.org/ttf-iosevka/)
 	- [Hack Nerd Fonts](https://aur.archlinux.org/nerd-fonts-hack/)
+	- [Feather](fonts/feather.ttf)
 	- [lemonbar-xft](https://aur.archlinux.org/lemonbar-xft-git/)
 	- [eww](https://aur.archlinux.org/packages/eww-git/)
 	- [cava](https://aur.archlinux.org/packages/cava/)
@@ -146,6 +147,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- neovim (ctags)
 	- rofi
 	- feh
+	- xss-lock (betterlockscreen)
 	- urxvt
 	- thunar
 	- ranger (ueberzug)
