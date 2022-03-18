@@ -29,7 +29,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
-* [Steps for the installation](#installation)
+* [Steps for the installation](#steps-for-the-installation)
 * [Tips](#tips)
 * [Hotkeys](#hotkeys)
 * [ToDo List](#todo-list)
@@ -43,6 +43,11 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 # Screenshots
 
+![locker](screenshots/betterlockscreen.png)
+*BetterLockScreen*\
+\
+\
+\
 ![eww](screenshots/eww.png)
 *eww widgets*\
 \
@@ -84,7 +89,8 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 		- [starship](https://github.com/starship/starship)
 		- [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions)
 		- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-	- Fonts : [Iosevka](https://typeof.net/Iosevka/), [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
+	- Fonts : [Iosevka](https://typeof.net/Iosevka/), [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack), [Feather](https://feathericons.com) ([ttf](fonts/feather.ttf))
+	- Locker : [BetterLockScreen](https://github.com/betterlockscreen/betterlockscreen)
     - Icons : [Candy Icons](https://github.com/EliverLara/candy-icons), [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
     - Music player : [cmus](https://github.com/cmus/cmus) ([some themes](https://github.com/averms/base16-cmus))
     - Audio visualizer : [cava](https://github.com/karlstav/cava)
