@@ -509,3 +509,15 @@ bindsym $mod+F1 exec --no-startup-id $eww/launch_eww
 
 bindsym $mod+q move scratchpad
 bindsym $mod+z scratchpad show
+
+#######
+# DMenu
+#######
+
+bindsym $mod+$shift+s exec dmenu_run -fn "Iosevka" -nb "#282c34" -nf "#839496" -sb "#839496" -sf "#282c34"
+
+########
+# Locker
+########
+
+exec_always --no-startup-id xss-lock -- betterlockscreen -l blur | while read line; do echo "[$(date '+%D %H:%m:%S')] MESSAGE: ${line}" >> ~/.cache/lock_logs.log; done

@@ -52,5 +52,4 @@ twm &
 
 xsetroot -cursor_name Breeze
 # setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle
-xss-lock -- betterlockscreen -l blur | while read line; do echo "[$(date '+%D %H:%m:%S')] MESSAGE: ${line}" >> ~/.cache/lock_logs.log; done
 exec i3
