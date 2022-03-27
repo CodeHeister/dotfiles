@@ -1,13 +1,8 @@
-/*
- * ROFI Powermenu template
- * Author: @BaptisteBdn
- */
-
 configuration {
     modi: "window";
     show-icons: true;
     font: "Iosevka 10";
-    icon-theme: "Papirus";
+    icon-theme: "candy-icons";
     display-window: "";
 	window-format: "{c}";
 }

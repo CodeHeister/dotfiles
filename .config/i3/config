@@ -240,74 +240,6 @@ bindsym $mod+F6 exec --no-startup-id ~/.config/eww/scripts/music_info --prev
 # Toggle
 bindsym $mod+F7 exec --no-startup-id ~/.config/eww/scripts/music_info --toggle
 
-##################
-# Bumblebee-status
-##################
-
-# set $bg #282C34BB
-# set $bg_down #282C34
-# set $red #DC322F
-# set $green #98971A
-# set $gray1 #ABB2BF
-# set $lightblue #458588
-# set $purple #B16286
-# set $gray2 #4B5263
-# set $lightbrown #A89984
-# set $darkgray #282c34aa
-# set $white #ffffff
-
-hide_edge_borders smart
-
-# bar {
-
-# i3bar_command i3bar -t
-
-# colors {
-        # # bar background color
-        # background $bg
-        # # text color used for blocks that do not have a color specified.
-        # statusline $gray1
-        # # workspaces section            
-        # #                    border  backgr. text
-        # focused_workspace    $gray2 $gray2 $darkgray
-        # inactive_workspace   $darkgray $darkgray $gray1
-        # active_workspace     $darkgray $darkgray $gray1
-        # urgent_workspace     $red $red $bg
-#     }
-  # workspace_buttons no
-  # status_command i3status
-  # font pango:IosevkaMedium 10
-  # position top
-  # tray_output none
-  # status_command bumblebee-status -m spotify date time amixer -e pasink pasource -p spotify.concise_controls=1 spotify.layout=spotify.song root.path=/ time.format="%H:%M" date.format="%a, %b %d %Y" -t onedark-powerline 
-  # # battery brightness  time.format="%H:%M CW %V"
-# }
-
-# bar {
-
-# i3bar_command i3bar -t
-
-# colors {
-        # # bar background color
-        # background $bg
-        # # text color used for blocks that do not have a color specified.
-        # statusline $gray1
-        # # workspaces section            
-        # #                    border  backgr. text
-        # focused_workspace    $gray2 $geay2 $darkgray
-        # inactive_workspace   $darkgray $darkgray $gray1
-        # active_workspace     $darkgray $darkgray $gray1
-        # urgent_workspace     $red $red $bg
-#    }
-  # # workspace_buttons no
-  # # status_command i3status
-  # font pango:IosevkaMedium 10
-  # position bottom
-  # tray_output none
-  # status_command bumblebee-status -m nic disk:root cpu sensors memory -e pasink pasource -p root.path=/ -t onedark-powerline
-  # # battery brightness  time.format="%H:%M CW %V"
-# }
-
 ################
 # Screen Capture
 ################
@@ -368,13 +300,13 @@ for_window [title="Steam Library Folders|Create or select new Steam library fold
 ###############
 
 # Launch an app
-bindsym $mod+F3 exec rofi -no-lazy-grab -show drun -theme "${rofi}/searcher.rasi" -icon-theme "candy-icons"
+bindsym $mod+F3 exec rofi -no-lazy-grab -show drun -theme "${rofi}/searcher.rasi"
 
 # Active apps
-bindsym $alt+Tab exec rofi -no-lazy-grab -show window -theme "${rofi}/active_apps.rasi" -icon-theme "candy-icons"
+bindsym $alt+Tab exec rofi -no-lazy-grab -show window -theme "${rofi}/active_apps.rasi"
 
 # Powermenu
-bindsym $mod+Shift+e exec rofi -modi 'Powermenu:$rofi/powermenu.sh' -theme ${rofi}/powermenu.rasi -show Powermenu -icon-theme "candy-icons"
+bindsym $mod+Shift+e exec rofi -modi 'Powermenu:$rofi/powermenu.sh' -theme ${rofi}/powermenu.rasi -show Powermenu
 
 bindsym $mod+Shift+p exec i3lock -c 000000
 
@@ -390,6 +322,8 @@ for_window [class=".*"] border pixel 0
 
 gaps inner 20
 gaps outer 4
+
+hide_edge_borders smart
 
 smart_gaps on
 
@@ -519,5 +453,7 @@ bindsym $mod+$shift+s exec dmenu_run -fn "Iosevka" -nb "#282c34" -nf "#839496" -
 ########
 # Locker
 ########
+
+# --ignore-sleep to disable locking on suspend
 
 exec_always --no-startup-id xss-lock -- betterlockscreen -l blur | while read line; do echo "[$(date '+%D %H:%m:%S')] MESSAGE: ${line}" >> ~/.cache/lock_logs.log; done

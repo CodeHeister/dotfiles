@@ -8,7 +8,7 @@ configuration {
     show-icons: true;
     font: "Iosevka 10";
     window-format: "{c}";
-    icon-theme: "Papirus";
+    icon-theme: "candy-icons";
 }
 
 @import "colors.rasi"
