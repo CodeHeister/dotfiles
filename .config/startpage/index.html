@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>
 			Start page
 		</title>
@@ -10,24 +11,13 @@
 		<link rel="icon" type="image/x-icon" href="src/img/favicons/favicon.ico"/>
 		<link rel="preload" href="src/css/main.css" as="style"/>
 		<link rel="stylesheet" href="src/css/main.css"/>
-		<script src="src/js/main.js"></script>
+		<script nonce="rand" src="src/js/main.js" defer></script>
+        <link rel="stylesheet" href="src/css/fontawesome/css/all.min.css">
 	</head>
-	<body onload="parallax()">
+	<body>
 		<div class="bg">
-			<form action="https://duckduckgo.com/?t=vivaldi">
-				<div class="form-holder">
-					<img src="src/img/duckduckgo.png">
-					<input type="text" id="search" name="q" placeholder="Search DuckDuckGo..." autocomplete="off">
-					<input type="submit" value="">
-				</div>
-			</form>
-			<div class="page-holder">
-				<a class="spinable page github" href="https://github.com"></a>
-				<a class="spinable page reddit" href="https://reddit.com"></a>
-				<a class="spinable page youtube" href="https://youtube.com"></a>
-				<a class="spinable page twitch" href="https://twitch.tv"></a>
-				<a class="spinable page arch" href="https://wiki.archlinux.org"></a>
-			</div>
+			<div id="list"></div>
+			<div id="icons"></div>
 		</div>
 	</body>
 </html>
