@@ -53,11 +53,6 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 \
 \
 \
-![startpage](screenshots/startpage.png)
-*parallax startpage*\
-\
-\
-\
 ![urxvt](screenshots/terminal.png)
 *terminal emulators and type test*\
 \
@@ -174,7 +169,10 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 # Hotkeys
 
-- i3-gaps (`.config/i3/config`) :
+<details>
+<summary>i3-gaps</summary>
+
+- `.config/i3/config` :
 	- `Mod+[0-9]` : go to workspace
 	- `Mod+Shift+[0-9]` : move active window to workspace
 	- `Alt+Ctrl+[A/D]` : move to the left/right workspace
@@ -234,11 +232,21 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- `Mod+F1` : launch/exit eww
 	- `Mod+DragMouseLeftButton` : drag floating windows
 	- `Mod+DragMouseRightButton` : resize non-floating windows and gaps between them
+</details>
+
 <br><br>
-- X11 (`.xinitrc`) :
+
+<details>
+<summary>X11</summary>
+- `.xinitrc` :
 	- `Alt+Tab` : change keyboard layout (disabled) uncomment `setxkbmap` and add your layouts)
+</details>
+
 <br><br>
-- URxvt (`.Xresources.d/urxvt-unicode`):
+
+<details>
+<summary>URxvt</summary>
+- `.Xresources.d/urxvt-unicode` :
 	- `Tab` : autofill
 	- `Shift+Tab` : autofill (backwards)
 	- `Ctrl+Shift+C` : copy
@@ -267,7 +275,8 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- `Shift+Up` : rename
 	- `Ctrl+[Left/Right]` : move tabs (left/right)
 	- `Shift+[Left/Right]` : go to tab (left/right)
-	
+</details>
+
 # ToDo List
 
 - [x] Onedark Thunar
