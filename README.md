@@ -238,6 +238,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 <details>
 <summary>X11</summary>
+
 - `.xinitrc` :
 	- `Alt+Tab` : change keyboard layout (disabled) uncomment `setxkbmap` and add your layouts)
 </details>
@@ -246,6 +247,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 <details>
 <summary>URxvt</summary>
+
 - `.Xresources.d/urxvt-unicode` :
 	- `Tab` : autofill
 	- `Shift+Tab` : autofill (backwards)
