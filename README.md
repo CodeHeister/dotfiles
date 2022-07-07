@@ -134,6 +134,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- [Candy icons](https://aur.archlinux.org/packages/candy-icons-git)
 	- [Breeze](https://aur.archlinux.org/packages/breeze-default-cursor-theme)
 	- [Qogir](https://aur.archlinux.org/packages/qogir-gtk-theme)
+	- [betterlockscreen](https://aur.archlinux.org/betterlockscreen.git)
 - Pacman :
 	- i3-gaps (may replace your current i3, won't occur any major changes except adding gaps)
 	- cmus
@@ -142,13 +143,13 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- neovim (ctags)
 	- rofi
 	- feh
-	- xss-lock (betterlockscreen)
-	- urxvt
+	- xss-lock
+	- rxvt-unicode
 	- thunar
 	- ranger (ueberzug)
 	- zathura
 	- dunst
-	- Papirus
+	- papirus-icon-theme
 <br><br>
 - For AUR :
 	- `yay -S "package"` or `git clone "AUR_git_link"; cd "AUR_package"; makepkg -si`
