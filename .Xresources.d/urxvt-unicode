@@ -192,10 +192,12 @@ URxvt.keysym.Control-s:           perl:keyboard-select:search
 !! Tabs URxvt.perl-ext-common:...,tabbed....
 !! Tab colors :
 URxvt.tabbedex.tabbar-fg: 3
-URxvt.tabbedex.tabbar-bg: 0
+URxvt.tabbedex.tabbar-bg: 237
 URxvt.tabbedex.tab-fg: 0
 URxvt.tabbedex.tab-bg: 2
 
+URxvt.tabbedex.autohide: true
+URxvt.tabbedex.title: no
 
 ! +-------------------+
 ! | :: C O L O R S :: |

@@ -68,7 +68,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -205,6 +205,15 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
+        bindsym $shift+j resize shrink width 1 px or 1 ppt
+        bindsym $shift+k resize grow height 1 px or 1 ppt
+        bindsym $shift+l resize shrink height 1 px or 1 ppt
+        bindsym $shift+semicolon resize grow width 1 px or 1 ppt
+
+        bindsym $shift+Left resize shrink width 1 px or 1 ppt
+        bindsym $shift+Down resize grow height 1 px or 1 ppt
+        bindsym $shift+Up resize shrink height 1 px or 1 ppt
+        bindsym $shift+Right resize grow width 1 px or 1 ppt
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -381,9 +390,11 @@ bindsym $mod+F9 exec --no-startup-id amixer set Master toggle
 
 # down
 bindsym $mod+F10 exec --no-startup-id amixer set Master 5%-
+bindsym $mod+$shift+F10 exec --no-startup-id amixer set Master 1%-
 
 # up
 bindsym $mod+F11 exec --no-startup-id amixer set Master 5%+
+bindsym $mod+$shift+F11 exec --no-startup-id amixer set Master 1%+
 
 ####################
 # Change gaps on fly
@@ -457,3 +468,5 @@ bindsym $mod+$shift+s exec dmenu_run -fn "Iosevka" -nb "#282c34" -nf "#839496" -
 # --ignore-sleep to disable locking on suspend
 
 exec_always --no-startup-id xss-lock -- betterlockscreen -l blur | while read line; do echo "[$(date '+%D %H:%m:%S')] MESSAGE: ${line}" >> ~/.cache/lock_logs.log; done
+
+bindsym $mod+$control+l exec --no-startup-id loginctl lock-session

@@ -180,7 +180,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 	- `Mod+Tab` : swap between current and last used workspace
 	- `Mod+Shift+C` : reload i3 config file
 	- `Mod+[Left/Right/Up/Down]` : change focus
-	- `Mod+Shift+[Left/Right/Up/Down]` : move focused window
+	- `Mod+Shift+[Left/Right/Up/Down]` : move focused window (floating), swap windows (tilling)
 	- `Mod+H` : split in horizontal orientation
 	- `Mod+V` : split in vertical orientation
 	- `Mod+F` : fullscreen toggle

@@ -56,10 +56,11 @@ Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/tc50cal/vim-terminal'
 Plug 'https://github.com/terryma/vim-multiple-cursors'
 Plug 'https://github.com/preservim/tagbar' 
-Plug 'https://github.com/neoclide/coc.nvim'
 Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/preservim/vim-markdown' 
-Plug 'https://github.com/iamcco/markdown-preview.nvim'
+Plug 'https://github.com/vimwiki/vimwiki'
+Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
 set encoding=UTF-8
 
@@ -72,5 +73,16 @@ call plug#end()
 colorscheme onedark
 set termguicolors
 
+" Better tab experience - from https://webdevetc.com/
+map <leader>tn :tabnew<cr>
+map <leader>t<leader> :tabnext
+map <leader>tm :tabmove
+map <leader>tc :tabclose<cr>
+map <leader>to :tabonly<cr>
+
 " nnoremap <C-n> :NERDTree<CR>
 " nnoremap <C-n> :NERDTreeToggle<CR>
+
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
