@@ -77,8 +77,14 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 *rofi powermenu*
 
 # Steps for the installation
+1. **Script :**
+```bash
+./install.sh pacman yay nvim set
+```
+_Requires yay installed_
+> If something goes wrong, there's an instruction bellow for manual installation
 
-1. **Utils list :**
+2. **Utils list :**
     - WM : [i3-gaps](https://github.com/Airblader/i3)
 	- Shell : zsh
 		- [starship](https://github.com/starship/starship)
