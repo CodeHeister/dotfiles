@@ -15,10 +15,9 @@ configuration {
 
 window {
     transparency: "real";
-
     background-color: @win-bg;
     width:50%;
-    height:25%;
+    height:21%;
 }
 
 mainbox {

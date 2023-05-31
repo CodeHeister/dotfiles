@@ -195,9 +195,9 @@ workspaces() {
 
 vol_popup_delay=3   # in cycles (1 cycle = 0.25sec)
 vol_ico=(
-	"奄"
-	"奔"
-	"墳"
+	""
+	""
+	""
 )
 
 volume() {
@@ -297,7 +297,7 @@ a_ram=60
 w_ram=40
 
 ram_stat() {
-	ram_out=" "
+	ram_out=" "
 	ram=$(free -t | awk 'NR == 2 {printf("%.0f"), $3/$2*100}')
 	if [[ $(echo $ram | cut -d "." -f 1) -ge $a_ram ]]; then
 		ram_out="%{F$red}${ram_out}$ram% %{F$fg}"

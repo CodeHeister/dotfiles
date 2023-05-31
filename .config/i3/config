@@ -147,13 +147,13 @@ bindsym $mod+d focus child
 set $ws1 "1 : "
 set $ws2 "2 : "
 set $ws3 "3 : "
-set $ws4 "4 : 切"
+set $ws4 "4 : "
 set $ws5 "5 : "
 set $ws6 "6 : "
 set $ws7 "7 : "
 set $ws8 "8 : "
 set $ws9 "9 : "
-set $ws10 "10 : "
+set $ws10 "10 : "
 
 # switch to workspace (workspace number)
 bindsym $mod+1 workspace $ws1
@@ -298,7 +298,7 @@ for_window [class="imv|krita|Blender"] move to workspace $ws8, focus
 for_window [class="discord"] move to workspace $ws8, focus
 
 # Workspace 9 [games]
-for_window [class="Steam|steam_proton*|steam_app*|Zenity|Lutris"] move to workspace $ws9, focus
+for_window [class="Steam|steam_proton*|steam_app*|Zenity|Lutris|league*|explorer*"] move to workspace $ws9, focus
 
 for_window [title="Steam*|Rockstar Games Launcher"] move to workspace $ws9, focus
 for_window [class="osu*"] move to workspace $ws9, focus
@@ -309,13 +309,13 @@ for_window [title="Steam Library Folders|Create or select new Steam library fold
 ###############
 
 # Launch an app
-bindsym $mod+F3 exec rofi -no-lazy-grab -show drun -theme "${rofi}/searcher.rasi"
+bindsym $mod+F3 exec rofi -no-lazy-grab -show drun -theme "${rofi}/searcher.rasi" -show-icons
 
 # Active apps
-bindsym $alt+Tab exec rofi -no-lazy-grab -show window -theme "${rofi}/active_apps.rasi"
+bindsym $alt+Tab exec rofi -no-lazy-grab -show window -theme "${rofi}/active_apps.rasi" -show-icons
 
 # Powermenu
-bindsym $mod+Shift+e exec rofi -modi 'Powermenu:$rofi/powermenu.sh' -theme ${rofi}/powermenu.rasi -show Powermenu
+bindsym $mod+Shift+e exec rofi -modi 'Powermenu:$rofi/powermenu.sh' -theme "${rofi}/powermenu.rasi" -show Powermenu
 
 bindsym $mod+Shift+p exec i3lock -c 000000
 
