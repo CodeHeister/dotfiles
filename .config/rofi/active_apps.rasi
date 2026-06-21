@@ -3,8 +3,12 @@ configuration {
     show-icons: true;
     font: "Iosevka 10";
     icon-theme: "candy-icons";
-    display-window: "";
-	window-format: "{c}";
+    display-window: "";
+    window-format: "{c}";
+    kb-row-next: "Tab,Alt+Tab,Right";
+    kb-row-prev: "ISO_Left_Tab,Alt+shift+Tab,Left";
+    kb-accept-entry: "Return,KP_Enter";
+    kb-cancel: "Escape,Alt+F4";
 }
 
 @import "colors.rasi"

@@ -1,9 +1,13 @@
+#!/bin/bash
+set -uo pipefail
+
 configs=(
 	".xinitrc"
 	".Xresources"
 	".Xresources.d"
 	".config"
 	".zshrc"
+	".profile"
 )
 
 paks_pacman=(
@@ -23,122 +27,233 @@ paks_pacman=(
 	"dunst"
 	"papirus-icon-theme"
 	"yarn"
+	"picom"
+	"cava"
+	"polybar"
+	"ttf-iosevka-nerd"
+	"ttf-hack-nerd"
+	"ttf-fira-code"
+	"zsh"
+	"starship"
+	"zoxide"
 )
 
-paks_yay=(
-	"betterlockscreen"
+paks_aur=(
 	"breeze-default-cursor-theme"
 	"qogir-gtk-theme"
 	"candy-icons-git"
-	"picom-ibhagwan-git"
-	"cava"
-	"eww-git"
-	"lemonbar-xft-git"
-	"ttf-hack-nerd"
 	"ttf-iosevka"
 )
 
-function install_pacman() {
-	local paks_install=""
+extra_pacman=(
+	"cava"
+	"cmus"
+	"htop"
+	"btop"
+	"cmatrix"
+	"obsidian"
+)
 
-	for i in "${paks_pacman[@]}"; do 
-		paks_install="$paks_install$i "
-	done
-	echo -n $paks_install
-	
+extra_aur=(
+	"tt"
+	"cbonsai"
+	"pipes.sh"
+)
+
+log_ok()  { printf "\033[36m%s\033[39m\n" "$1"; }
+log_warn(){ printf "\033[33m%s\033[39m\n" "$1"; }
+log_err() { printf "\033[31m%s\033[39m\n" "$1" >&2; }
+
+run_root() {
 	if [ "$EUID" -ne 0 ]; then
-		sudo pacman -Sy $paks_install
+		sudo "$@"
 	else
-		printf "\033[31mpacman\033[39m: Already \033[36mroot\033[39m (--noconfirm)\n"
-		pacman -Sy $paks_install --noconfirm
+		log_warn "Already root, running without sudo"
+		"$@"
 	fi
+}
+
+find_aur_helper() {
+	if command -v yay &> /dev/null; then
+		echo "yay"
+	elif command -v paru &> /dev/null; then
+		echo "paru"
+	fi
+}
+
+function install_pacman() {
+	run_root pacman -Sy --needed --noconfirm "${paks_pacman[@]}"
 }
 
 function install_aur() {
-	local paks_install=""
+	if [ "$EUID" -eq 0 ]; then
+		log_err "AUR: refusing to build/install AUR packages as root"
+		return 1
+	fi
 
-	for i in "${paks_yay[@]}"; do 
-		paks_install="$paks_install$i "
-	done
+	local helper
+	helper=$(find_aur_helper)
 
-	if [ "$EUID" -ne 0 ]; then
-		if [ ! command -v yay &> /dev/null ]; then
-			printf "\033[31myay\033[39m: no yay"
+	if [ -z "$helper" ]; then
+		log_warn "AUR helper: neither yay nor paru found"
+		printf "Install paru now? [y/N] "
+		read -r answer
+		case "$answer" in
+			[yY]|[yY][eE][sS])
+				install_paru_binary || { log_err "paru: installation failed"; return 1; }
+				helper="paru"
+				;;
+			*)
+				log_err "AUR helper: skipping AUR package installation"
+				return 1
+				;;
+		esac
+	else
+		log_ok "AUR helper: using $helper"
+	fi
+
+	"$helper" -Sy --needed --noconfirm "${paks_aur[@]}"
+}
+
+function install_paru_binary() {
+	log_ok "paru: installing prerequisites"
+	run_root pacman -S --needed --noconfirm base-devel || return 1
+
+	local tmpdir
+	tmpdir=$(mktemp -d) || return 1
+
+	(
+		set -e
+		cd "$tmpdir"
+		git clone https://aur.archlinux.org/paru.git
+		cd paru
+		makepkg -si --noconfirm
+	)
+	local status=$?
+
+	rm -rf "$tmpdir"
+	return $status
+}
+
+function install_zsh() {
+	if ! command -v zsh &> /dev/null; then
+		log_err "zsh: not installed (run './install.sh pacman' first)"
+		return 1
+	fi
+
+	local zsh_path
+	zsh_path=$(command -v zsh)
+
+	if [ "$SHELL" != "$zsh_path" ]; then
+		log_ok "zsh: setting as default shell for $USER"
+		if run_root chsh -s "$zsh_path" "$USER"; then
+			log_ok "zsh: default shell set (effective next login)"
 		else
-			yay -Sy $paks_install
+			log_err "zsh: failed to set default shell"
 		fi
 	else
-		printf "\033[31myay\033[39m: Already \033[36mroot\033[39m (not allowed)\n"
+		log_ok "zsh: already the default shell"
 	fi
+
+	if [ -d "$HOME/.oh-my-zsh" ]; then
+		log_ok "oh-my-zsh: already installed"
+		return 0
+	fi
+
+	log_ok "oh-my-zsh: installing"
+	RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c \
+		"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+		|| { log_err "oh-my-zsh: installation failed"; return 1; }
+}
+
+function install_extra() {
+	log_ok "extra: installing pacman packages"
+	run_root pacman -Sy --needed --noconfirm "${extra_pacman[@]}"
+
+	if [ "$EUID" -eq 0 ]; then
+		log_err "extra: refusing to build/install AUR packages as root, skipping AUR extras"
+		return 1
+	fi
+
+	local helper
+	helper=$(find_aur_helper)
+
+	if [ -z "$helper" ]; then
+		log_err "extra: no AUR helper found (run './install.sh aur' first to install one), skipping AUR extras"
+		return 1
+	fi
+
+	log_ok "extra: installing AUR packages via $helper"
+	"$helper" -Sy --needed --noconfirm "${extra_aur[@]}"
 }
 
 function move_configs() {
-	for i in ${configs[@]}; do
-		if [ -e "./${i}" ]; then
-			if [ -d "./${i}" ]; then
-				mkdir -p "$HOME/${i}"
-				find "./${i}" -maxdepth 1 -mindepth 1 | {
-					while read line; do 
-						save="$HOME/${i}/${line##*/}"
-						if [ -e "${save}" ]; then
-							mv "${save}" "${save}.save"
-							if [ $? -ne 0 ]; then
-								printf "\033[31m%s\033[39m: initial config not saved\n" \
-									"$HOME/${i}" >&2
-							else 
-								printf "\033[36m%s\033[39m: initial config source \033[36m%s\033[39m saved as \033[36m%s.save\033[39m\n" \
-									"$HOME/${i}" "${line##*/}" "${line##*/}"
-							fi
-						fi
-						cp -r "./${i}/${line##*/}" "$HOME/${i}"
-						if [ $? -ne 0 ]; then
-							printf "\033[31m$HOME/${i}\033[39m: failed to add \033[36m${line##*/}\033[39m\n" >&2
-						else 
-							printf "\033[36m$HOME/${i}\033[39m: added \033[36m${line##*/}\033[39m\n"
-						fi
-					done
-				}
-			else
-				save="$HOME/${i}"
-				if [ -e "${save}" ]; then
-					mv "${save}" "${save}.save"
-					if [ $? -ne 0 ]; then
-						printf "\033[31m%s\033[39m: initial config not saved\n" \
-							"$HOME" >&2
+	for i in "${configs[@]}"; do
+		if [ ! -e "./${i}" ]; then
+			log_err "${i}: invalid path"
+			continue
+		fi
+
+		if [ -d "./${i}" ]; then
+			mkdir -p "$HOME/${i}"
+			find "./${i}" -maxdepth 1 -mindepth 1 | while read -r line; do
+				name="${line##*/}"
+				dest="$HOME/${i}/${name}"
+
+				if [ -e "$dest" ]; then
+					if mv "$dest" "${dest}.save"; then
+						log_ok "$HOME/${i}: initial config $name saved as ${name}.save"
 					else
-						printf "\033[36m%s\033[39m: initial config source \033[36m%s\033[39m saved as \033[36m%s.save\033[39m\n" \
-							"$HOME" "${i}" "${i}"
+						log_err "$HOME/${i}: initial config not saved"
 					fi
 				fi
-				cp -r "./${i}" "$HOME"
-				if [ $? -ne 0 ]; then
-					printf "\033[31m$HOME\033[39m: failed to add \033[36m${i}\033[39m\n"
-				else 
-					printf "\033[36m$HOME\033[39m: added \033[36m${i}\033[39m\n"
+
+				if cp -r "./${i}/${name}" "$HOME/${i}"; then
+					log_ok "$HOME/${i}: added $name"
+				else
+					log_err "$HOME/${i}: failed to add $name"
+				fi
+			done
+		else
+			dest="$HOME/${i}"
+
+			if [ -e "$dest" ]; then
+				if mv "$dest" "${dest}.save"; then
+					log_ok "$HOME: initial config $i saved as ${i}.save"
+				else
+					log_err "$HOME: initial config not saved"
 				fi
 			fi
-		else
-			printf "$i: \033[31minvalid path\033[39m\n"
+
+			if cp -r "./${i}" "$HOME"; then
+				log_ok "$HOME: added $i"
+			else
+				log_err "$HOME: failed to add $i"
+			fi
 		fi
 	done
 }
 
-function make_nvim() {
-	if [ ! -e "$HOME/.local/share/nvim/site/autoload/plug.vim" ]; then
-		sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	fi
-	nvim -c 'PlugUpdate' -c 'PlugInstall' -c 'qa!'
-}
-
 function show_help() {
-	printf "Usage: ./install.sh [SUB-COMMAND]\n\n  help\t\tshow this message\n  yay\t\tinstall aur packages\n  pacman\tinstall pacman packages\n  nvim\t\tinstall nvim plugins\n  set\t\tmove configs to home\n\nOn no sub-commands script will use default settings.\n\n"
+	cat <<'EOF'
+Usage: ./install.sh [SUB-COMMAND]
+  help		show this message
+  aur		install aur packages (uses yay or paru, offers to install paru if neither found)
+  pacman	install pacman packages
+  zsh		set zsh as default shell and install oh-my-zsh
+  set		move configs to home
+  extra		install optional extras (cmus, cava, htop, btop, cmatrix, obsidian, tt, cbonsai, pipes.sh)
+            not part of the default pipeline, run explicitly
+On no sub-commands script will use default settings.
+EOF
 }
 
 if [ $# -lt 1 ]; then
 	install_pacman
 	install_aur
 	move_configs
-	make_nvim
+	install_zsh
+	exit 0
 fi
 
 while (( "$#" )); do
@@ -146,18 +261,18 @@ while (( "$#" )); do
 	case $arg in
 		pacman)
 			install_pacman ;;
-		yay)
+		aur)
 			install_aur ;;
 		set)
 			move_configs ;;
-		nvim)
-			make_nvim ;;
+		zsh)
+			install_zsh ;;
+		extra)
+			install_extra ;;
 		help)
 			show_help ;;
 		*)
-			printf "\033[31m%s\033[39m: No such sub-command\n" "$arg" >&2
+			log_err "$arg: No such sub-command" ;;
 	esac
 	shift
 done
-
-

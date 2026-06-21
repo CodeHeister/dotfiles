@@ -1,0 +1,9 @@
+quit 
+close
+clear
+bind -f common x player-play
+clear 
+seek +1000
+add ~/Downloads/D4602DB0_2.mp3
+o
+open 

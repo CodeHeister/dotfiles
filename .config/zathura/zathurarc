@@ -1,5 +1,8 @@
 set selection-clipboard clipboard
+set save-database-history true
+set database "sqlite"
 
+set sandbox none
 set window-title-basename "true"
 set selection-clipboard "clipboard"
 

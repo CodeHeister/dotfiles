@@ -22,12 +22,12 @@ focus_on_window_activation focus
 
 # Main
 set $rofi ~/.config/rofi
-set $term urxvt
+set $term kitty
 set $eww $HOME/.config/eww
 set $wallpaper $HOME/.config/wallpaper
 set $dunst $HOME/.config/dunst
 set $picom $HOME/.config/picom
-set $lemonbar "~/.config/lemonbar/bar | lemonbar -p -n 'Lemonbar' -a 25 -f 'Iosevka Medium:pixelsize=14' -f 'Hack Nerd Font:pixelsize=15' | while read line; do eval '${line}'; done && notify-send -u low 'Lemonbar' 'Your statusbar was stopped' || notify-send -u low 'Lemonbar' 'Something went wrong'"
+set $bar $HOME/.config/polybar/scripts/launch.sh
 
 # Use super/alt/control key
 set $mod Mod4
@@ -53,7 +53,7 @@ font pango:$font $size_font
 font pango:monospace 8
 
 # Wallpapers
-exec --no-startup-id feh -z --bg-scale $wallpaper
+exec --no-startup-id feh -z --bg-scale $wallpaper &
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -72,9 +72,9 @@ exec --no-startup-id dex --autostart --environment i3
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec_always --no-startup-id pkill picom; picom --experimental-backends --backend glx --no-use-damage --config $picom/picom.conf &
-exec --no-startup-id nm-applet
-exec_always --no-startup-id dunst -config $dunst/dunstrc
+exec_always --no-startup-id pkill picom; picom --backend glx --no-use-damage --config $picom/picom.conf &
+exec --no-startup-id nm-applet &
+exec_always --no-startup-id dunst -config $dunst/dunstrc &
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -223,31 +223,25 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ##########
-# Lemonbar
+# Polybar
 ##########
+exec_always --no-startup-id $bar
 
-# On start
-exec_always --no-startup-id pkill lemonbar
-exec_always --no-startup-id $lemonbar
-
-# Start lemonbar
-bindsym $mod+$shift+A exec --no-startup-id $lemonbar
-
-# Close lemonbar
-bindsym $mod+$shift+D exec --no-startup-id pkill lemonbar
+# Restart polybar
+bindsym $mod+$shift+P exec --no-startup-id $bar
 
 #################
 # Spitify hotkeys
 #################
 
-# Next
-bindsym $mod+F8 exec --no-startup-id ~/.config/eww/scripts/music_info --next
-
 # Prev
-bindsym $mod+F6 exec --no-startup-id ~/.config/eww/scripts/music_info --prev
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Toggle
-bindsym $mod+F7 exec --no-startup-id ~/.config/eww/scripts/music_info --toggle
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+
+# Next
+bindsym XF86AudioNext exec --no-startup-id playerctl next
 
 ################
 # Screen Capture
@@ -270,7 +264,7 @@ bindsym $control+$shift+Print exec --no-startup-id flameshot gui
 # bindsym $mod+$shift+/ scratchpad show
 
 # Workspace 1 [terminal]
-for_window [class="urxvt"] focus
+for_window [class="${term}"] focus
 
 # Workspace 2 [browser]
 for_window [class="Vivaldi|Tor Browser|Tor Browser Launcher Settings"] move to workspace $ws2, focus
@@ -316,8 +310,6 @@ bindsym $alt+Tab exec rofi -no-lazy-grab -show window -theme "${rofi}/active_app
 
 # Powermenu
 bindsym $mod+Shift+e exec rofi -modi 'Powermenu:$rofi/powermenu.sh' -theme "${rofi}/powermenu.rasi" -show Powermenu
-
-bindsym $mod+Shift+p exec i3lock -c 000000
 
 # Swap between current and last workspace (Mod+Tab)
 bindcode $mod+23 workspace back_and_forth
@@ -386,15 +378,13 @@ smart_borders on
 #############
 
 # mute/unmute
-bindsym $mod+F9 exec --no-startup-id amixer set Master toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # down
-bindsym $mod+F10 exec --no-startup-id amixer set Master 5%-
-bindsym $mod+$shift+F10 exec --no-startup-id amixer set Master 1%-
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 
 # up
-bindsym $mod+F11 exec --no-startup-id amixer set Master 5%+
-bindsym $mod+$shift+F11 exec --no-startup-id amixer set Master 1%+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 
 ####################
 # Change gaps on fly
@@ -467,6 +457,6 @@ bindsym $mod+$shift+s exec dmenu_run -fn "Iosevka" -nb "#282c34" -nf "#839496" -
 
 # --ignore-sleep to disable locking on suspend
 
-exec_always --no-startup-id xss-lock -- betterlockscreen -l blur | while read line; do echo "[$(date '+%D %H:%m:%S')] MESSAGE: ${line}" >> ~/.cache/lock_logs.log; done
+exec_always --no-startup-id xss-lock -- betterlockscreen -l blur --show-layout | while read line; do echo "[$(date '+%D %H:%m:%S')] MESSAGE: ${line}" >> ~/.cache/lock_logs.log; done
 
 bindsym $mod+$control+l exec --no-startup-id loginctl lock-session

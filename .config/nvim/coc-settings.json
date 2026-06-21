@@ -1,0 +1,23 @@
+{
+  "tsserver.enable": true,
+  "tsserver.log": "verbose",
+  "tsserver.useSyntaxServer": "always",
+  "prettier.enable": true,
+  "diagnostic.checkCurrentLine": true,
+  "suggest.noselect": false,
+  "eslint.autoFixOnSave": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["package.json"],
+      "url": "https://json.schemastore.org/package"
+    },
+    {
+      "fileMatch": ["tsconfig.json", "tsconfig.*.json"],
+      "url": "https://json.schemastore.org/tsconfig"
+    }
+  ],
+  "suggest.enablePreselect": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+}

@@ -1,5 +1,5 @@
 # dotfiles
-> Linux config files (rxvt-unicode, flameshot, dunst, lemonbar-xft, picom, cava, cmus, eww, zathura, rofi, i3-gaps, nvim, ranger)
+> Linux config files (rxvt-unicode, kitty, flameshot, dunst, polybar, picom, cava, cmus, zathura, rofi, i3-gaps, nvim, ranger)
 ```text
                     dP            dP   .8888b oo dP
                     88            88   88   "    88
@@ -16,8 +16,8 @@
 |           i3 | window manager                                             i3(1) |
 |        picom | a compositor for X11                                    picom(1) |
 |    flameshot | powerful, simple-to-use screenshot software         flameshot(1) |
-|     lemonbar | featherweight lemon-scented bar                      lemonbar(1) |
-|          eww | simple widgets                                                   |
+|      polybar | a fast and easy-to-use status bar                     polybar(1) |
+|        kitty | the fast, feature-rich, GPU based terminal               kitty(1) |
 |       neovim | text editor                                              nvim(1) |
 | rxvt-unicode | a VT102 emulator for the X window system      urxvt(1), urxvt(7) |
 |       ranger | file manager                                           ranger(1) |
@@ -43,16 +43,6 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 
 # Screenshots
 
-![locker](screenshots/betterlockscreen.png)
-*BetterLockScreen*\
-\
-\
-\
-![eww](screenshots/eww.png)
-*eww widgets*\
-\
-\
-\
 ![urxvt](screenshots/terminal.png)
 *terminal emulators and type test*\
 \
@@ -64,7 +54,7 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 \
 \
 ![thunar](screenshots/thunar.png)
-*dunst, thunar and eww calendar*\
+*dunst and thunar*\
 \
 \
 \
@@ -79,48 +69,46 @@ For additional info i suggest you to check Arch Wiki pages about this utils to s
 # Steps for the installation
 1. **Script :**
 ```bash
-./install.sh pacman yay nvim set
+./install.sh pacman aur set zsh
 ```
-_Requires yay installed_
-> If something goes wrong, there's an instruction bellow for manual installation
+> Installs all pacman/AUR packages, moves configs to `~`, and sets up zsh. The script will use `yay` if it's already installed; otherwise it falls back to `paru` and offers to install it for you. If something goes wrong, there's an instruction below for manual installation.
 
 2. **Utils list :**
     - WM : [i3-gaps](https://github.com/Airblader/i3)
 	- Shell : zsh
 		- [starship](https://github.com/starship/starship)
+		- [zoxide](https://github.com/ajeetdsouza/zoxide)
 		- [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions)
 		- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-	- Fonts : [Iosevka](https://typeof.net/Iosevka/), [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack), [Feather](https://feathericons.com) ([ttf](fonts/feather.ttf))
-	- Locker : [BetterLockScreen](https://github.com/betterlockscreen/betterlockscreen)
+		- [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
+	- Fonts : [Iosevka](https://typeof.net/Iosevka/), [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack), [Fira Code](https://github.com/tonsky/FiraCode)
+	- Locker : none bundled — set up a screen locker yourself (e.g. [i3lock](https://github.com/i3/i3lock), [i3lock-fancy](https://github.com/meskarune/i3lock-fancy), [betterlockscreen](https://github.com/betterlockscreen/betterlockscreen), or your own `xss-lock` hook)
     - Icons : [Candy Icons](https://github.com/EliverLara/candy-icons), [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
     - Music player : [cmus](https://github.com/cmus/cmus) ([some themes](https://github.com/averms/base16-cmus))
     - Audio visualizer : [cava](https://github.com/karlstav/cava)
 	- Notification daemon : [dunst](https://github.com/dunst-project/dunst)
 	- Cursor : Breeze
 	- GTK Theme : [Qogir](https://github.com/vinceliuice/Qogir-theme)
-	- Terminal emulator : 
-		- URxvt <tmux> :
+	- Terminal emulator :
+		- **Kitty** (default) — fast, GPU-accelerated, recommended unless your hardware is weak
+		- URxvt <tmux> (lightweight alternative for weaker machines) :
 			- [urxvt-perls](https://github.com/muennich/urxvt-perls)
 			- [urxvt-font-size](https://github.com/majutsushi/urxvt-font-size)
 			- [urxvt-tabbedex](https://github.com/stepb/urxvt-tabbedex)
-		- Kitty
 	- File manager : 
 		- Terminal : [ranger](https://github.com/ranger/ranger)
-		- GUI : thunar
+		- GUI : [thunar](https://github.com/xfce-mirror/thunar)
 	- Screenshot software : [maim](https://github.com/naelstrof/maim), [flameshot](https://github.com/flameshot-org/flameshot)
-    - Widgets : [eww](https://github.com/elkowar/eww) ([docs](https://elkowar.github.io/eww/)) 
-        - 1920x1080 : [adi1090x's widgets](https://github.com/adi1090x/widgets)
-        - 1360x768 : [edited widgets](.config/eww) with Spotify
-    - Statusbar : [lemonbar-xft](https://github.com/drscream/lemonbar-xft)
+    - Statusbar : [polybar](https://github.com/polybar/polybar)
     - Text editor : 
 		- Terminal : [neovim](https://github.com/neovim/neovim) 
-			- [Plugin manager](https://github.com/junegunn/vim-plug)
+			- [Plugin manager](https://github.com/lazyvim/lazyvim)
 			- Themes :
 				- [Navarasu's onedark](https://github.com/navarasu/onedark.nvim)
 				- [Joshdick's onedark](https://github.com/joshdick/onedark.vim)
 				- [Crusoexia's monokai](https://github.com/crusoexia/vim-monokai)
 		- GUI : [typora](https://typora.io), [xed](https://github.com/linuxmint/xed)
-	- Compositor : [Ibhagwan's picom](https://github.com/ibhagwan/picom-ibhagwan-git)
+	- Compositor : [picom](https://github.com/yshui/picom)
     - App launcher : [rofi](https://github.com/davatorium/rofi)
     - Wallpapers : [lambda wallpapers](https://github.com/pagankeymaster/lambda-wallpapers), [Aenami](https://www.reddit.com/user/Aenami/)
 	- Document viewer : [zathura](https://github.com/pwmt/zathura) ([Dracula theme](https://github.com/dracula/zathura))
@@ -131,16 +119,9 @@ _Requires yay installed_
 ## Required packages : 	
 - AUR :
 	- [Iosevka](https://aur.archlinux.org/ttf-iosevka/)
-	- [Hack Nerd Fonts](https://aur.archlinux.org/nerd-fonts-hack/)
-	- [Feather](fonts/feather.ttf)
-	- [lemonbar-xft](https://aur.archlinux.org/lemonbar-xft-git/)
-	- [eww](https://aur.archlinux.org/packages/eww-git/)
-	- [cava](https://aur.archlinux.org/packages/cava/)
-	- [picom](https://aur.archlinux.org/packages/picom-ibhagwan-git/)
 	- [Candy icons](https://aur.archlinux.org/packages/candy-icons-git)
 	- [Breeze](https://aur.archlinux.org/packages/breeze-default-cursor-theme)
 	- [Qogir](https://aur.archlinux.org/packages/qogir-gtk-theme)
-	- [betterlockscreen](https://aur.archlinux.org/betterlockscreen.git)
 - Pacman :
 	- i3-gaps (may replace your current i3, won't occur any major changes except adding gaps)
 	- cmus
@@ -151,14 +132,24 @@ _Requires yay installed_
 	- feh
 	- xss-lock
 	- rxvt-unicode
+	- kitty
 	- thunar
 	- ranger (ueberzug)
 	- zathura
 	- dunst
 	- papirus-icon-theme
+	- picom
+	- cava
+	- polybar
+	- ttf-iosevka-nerd
+	- ttf-hack-nerd
+	- ttf-fira-code
+	- zsh
+	- starship
+	- zoxide
 <br><br>
 - For AUR :
-	- `yay -S "package"` or `git clone "AUR_git_link"; cd "AUR_package"; makepkg -si`
+	- `yay -S "package"` / `paru -S "package"` or `git clone "AUR_git_link"; cd "AUR_package"; makepkg -si`
 - For Pacman :
 	- `pacman -S "package"`
 
@@ -169,10 +160,10 @@ _Requires yay installed_
 
 # Tips
 
-- Don't forget to add your API keys to `.config/eww/scripts`.
 - Add your keyboard layouts to `.xinitrc`.
-- You can easily configure lemonbar output in `.config/lemonbar/bar` and add your own functionality. There's also an array of colors. Each color is binded to workspace number, so change workspace's names correctly.
+- You can easily configure polybar output in `.config/polybar` and add your own modules. There's also an array of colors per workspace, so change workspace names accordingly.
 - If you want to move rofi configs, don't forget to move colors.rasi with them in the same directory. Overwise you'll get default colors.
+- A screen locker is not bundled anymore — wire up `xss-lock` (already installed) with a locker of your choice in `.xinitrc` or your i3 config.
 
 # Hotkeys
 
@@ -201,8 +192,7 @@ _Requires yay installed_
 	- `Mod+R` : resize mode
 		- `[Left/Right/Up/Down]` : resize
 		- `Esc` : exit resize mode (don't forget to press it)
-	- `Mod+Shift+A` : start lemonbar
-	- `Mod+Shift+D` : close lemonbar
+	- `Mod+Shift+P` : reload polybar
 	- `Print` : fullscreen screenshot (saves to ~/Pictures/Screenshots)
 	- `Ctrl+Print` : area or app screenshot (saves to ~/Pictures/Screenshots)
 	- `Ctrl+Shift+Print` : flameshot (interactive screen software with utils)
@@ -232,11 +222,10 @@ _Requires yay installed_
 			- `Shift+-` : -5 to current value for all workspaces
 			- `Shift+0` : set all gaps 0
 			- `Esc` : exit gaps editor
-	- `Mod+Shift+T` or `Mod+Enter` : launch terminal
+	- `Mod+Shift+T` or `Mod+Enter` : launch terminal (kitty, or urxvt if configured)
 	- `Mod+Q` : hide current window
 	- `Mod+Z` : roll through hidden windows
 	- `Mod+Shift+Q` : close current window
-	- `Mod+F1` : launch/exit eww
 	- `Mod+DragMouseLeftButton` : drag floating windows
 	- `Mod+DragMouseRightButton` : resize non-floating windows and gaps between them
 </details>
@@ -253,7 +242,7 @@ _Requires yay installed_
 <br><br>
 
 <details>
-<summary>URxvt</summary>
+<summary>URxvt (optional, lightweight terminal for weaker hardware)</summary>
 
 - `.Xresources.d/urxvt-unicode` :
 	- `Tab` : autofill
@@ -286,13 +275,47 @@ _Requires yay installed_
 	- `Shift+[Left/Right]` : go to tab (left/right)
 </details>
 
+<details>
+<summary>Kitty</summary>
+
+**Theme**
+- Onedark-style scheme: dark background (`#282c34`), warm foreground (`#839496`)
+- 16-color palette tuned for an Onedark/Solarized-ish hybrid look
+
+**Tabs**
+- Powerline-style tab bar (slanted), pinned to the top
+- Active tab highlighted (`#979eab` bg / dark fg), inactive tabs blend into the background
+- Tab titles show `index:title`; active tab shows just the title
+
+**Fonts**
+- Iosevka Light (12.5pt), with Bold / Italic / Bold Italic variants
+- Ligatures enabled by default, with hotkeys to toggle scope
+
+**Hotkeys**
+- `Ctrl+Shift+Down` : new tab
+- `Ctrl+Shift+D` : close tab
+- `Ctrl+Shift+Up` : rename tab
+- `Ctrl+[1-9]` : jump to tab 1–9
+- `Ctrl+0` : jump to tab 10
+- `Alt+1` : disable ligatures in active tab, always
+- `Alt+2` : enable ligatures everywhere, never disable
+- `Alt+3` : disable ligatures in tab under cursor
+- `Ctrl+Shift+C` / `Ctrl+Shift+V` : copy / paste clipboard
+
+**Misc**
+- URL detection on, curly underline style, opens with system default handler
+- Copy-on-select off, audio bell off
+
+</details>
+
 # ToDo List
 
 - [x] Onedark Thunar
-- [x] Change eww widgets
+- [x] Switch statusbar from lemonbar to polybar
+- [x] Switch default terminal to kitty
 - [x] Add startpage
 - [x] Better urxvt
 
 # Afterwords
 
-I'm looking forward for your tips and i'm ready to help you or add some info here, if you'll consider it necessary. I'll necessary clear and improve configs to make it more flexible and convenient. 
+I'm looking forward for your tips and i'm ready to help you or add some info here, if you'll consider it necessary. I'll necessary clear and improve configs to make it more flexible and convenient.
